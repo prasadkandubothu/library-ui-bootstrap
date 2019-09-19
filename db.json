@@ -1,0 +1,71 @@
+{
+  "users": [
+    {
+      "firstname": "prasad",
+      "lastname": "prasad",
+      "username": "prasad",
+      "password": "prasad",
+      "role": "user"
+    },
+    {
+      "firstname": "admin",
+      "lastname": "admin",
+      "username": "admin",
+      "password": "admin",
+      "role": "admin"
+    }
+  ],
+  "login": [
+    {
+      "id": 1,
+      "username": "prasad",
+      "password": "prasad",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "username": "admin",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "username": "admin",
+      "password": "admin",
+      "role": "user"
+    }
+  ],
+  "books": [
+    {
+      "bookId": "1222",
+      "bookName": "Java by James",
+      "author": "James",
+      "category": "coding",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "bookId": "2",
+      "bookName": "Wndiows by Gates",
+      "author": "Gates",
+      "publications": "Vikram Publications",
+      "category": "coding"
+    },
+    {
+      "id": 3,
+      "bookId": "3",
+      "bookName": "C by Dennies",
+      "author": "Dennies",
+      "publications": "Vikram Publications",
+      "category": "coding"
+    },
+    {
+      "id": 4,
+      "bookId": "4",
+      "bookName": "CPU by Charles",
+      "author": "Charles",
+      "publications": "Vikram Publications",
+      "category": "coding"
+    }
+  ]
+}

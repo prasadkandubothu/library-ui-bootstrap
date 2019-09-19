@@ -1,0 +1,43 @@
+<div class="row">
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left:10px;" (click)="addBook()">Add Book</button>
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" style="margin-left:10px;" (click)="editBook($event)">Edit Book</button>
+    <button class="btn btn-danger" type="button" style="margin-left:10px;">Delete</button>
+  
+</div>
+<br/>
+<table class="table">
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td><input type="radio" name="bookInfo" (click)="selectedBookDetails(book)"/></td>
+        <td>{{book.bookName}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+<!-- Trigger the modal with a button -->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title">Modal Header</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)= "closeModal()">&times;</button>
+       
+      </div>
+      <div class="modal-body">
+       <app-book [book]="selectedBook"></app-book>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)= "closeModal()">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
