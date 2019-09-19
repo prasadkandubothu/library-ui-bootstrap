@@ -1,6 +1,5 @@
 .footer{
     bottom:0px;
-    position: fixed;
-    background-color: gainsboro;
+    position: fixed;   
     width: 100%;
 }

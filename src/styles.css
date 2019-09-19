@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+.backgroudColor {
+    background-color: #0099cc;
+    color: white;
+}
+
+.topCenter {
+   padding-top:45%;
+}
+
+.widthCenter {
+    padding-left:8%;
+}

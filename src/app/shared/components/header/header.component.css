@@ -1,5 +1,19 @@
 #my-nav{
     right:10px;
-    position: fixed;
-
+   /* position: fixed;*/
 }
+
+.navbar-nav .active{
+    /*text-decoration-line: underline;*/
+    color: rgb(255, 255, 255);
+}
+
+.menuRight{
+    right : 0;
+    position: fixed;
+   
+}
+/*
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: rgb(255, 255, 255);
+}*/

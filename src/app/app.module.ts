@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
-import { PreloginModule } from './prelogin/prelogin.module';
 import { FormsModule } from '@angular/forms';
-import { BooksModule } from './books/books.module';
+import { RouterModule } from '@angular/router';
+import { appModuleRoutes } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -14,8 +14,9 @@ import { BooksModule } from './books/books.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    SharedModule,
-    PreloginModule,BooksModule
+    SharedModule,    
+    RouterModule,
+    appModuleRoutes
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,18 +1,32 @@
-<div class="row">
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="margin-left:10px;" (click)="addBook()">Add Book</button>
-    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" style="margin-left:10px;" (click)="editBook($event)">Edit Book</button>
-    <button class="btn btn-danger" type="button" style="margin-left:10px;">Delete</button>
+<div class="container-fluid">
   
+   <!-- Admin operational buttons-->
+    <div class="row" *ngIf="auth.user && auth.role == 'admin'">
+        <div style="padding-top :20px;">
+            <button type="button" class="btn btn-info btnMargin" data-toggle="modal" data-target="#myModal" (click)="addBook()"> <span class="glyphicon glyphicon-plus"></span> Add Book</button>
+            <button type="button" class="btn btn-warning btnMargin" data-toggle="modal" data-target="#myModal" (click)="editBook($event)">Edit Book</button>
+            <button class="btn btn-danger btnMargin" type="button" style="margin-left:10px;">Delete</button> 
+        </div> 
+    </div>
+
+    <br/>
+    <div class="row">
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td><input type="radio" name="bookInfo" (click)="selectedBookDetails(book)"/></td>
+          <td>{{book.id}}</td>
+          <td>{{book.bookId}}</td>
+          <td>{{book.bookName}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.category}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
 </div>
-<br/>
-<table class="table">
-    <tbody>
-      <tr *ngFor="let book of books">
-        <td><input type="radio" name="bookInfo" (click)="selectedBookDetails(book)"/></td>
-        <td>{{book.bookName}}</td>
-      </tr>
-    </tbody>
-  </table>
 
 
 
@@ -25,15 +39,15 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">{{modalWindowTitle}}</h4>
         <button type="button" class="close" data-dismiss="modal" (click)= "closeModal()">&times;</button>
        
       </div>
       <div class="modal-body">
-       <app-book [book]="selectedBook"></app-book>
+       <app-book [book]="selectedBook" [isEdit]="isEdit" (saveEvent)="saveBookAck($event)"></app-book>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)= "closeModal()">Close</button>
+      <div class="modal-footer">       
+        <button type="button" id="closePopup" class="btn btn-info" data-dismiss="modal" (click)= "closeModal()">Close</button>
       </div>
     </div>
 

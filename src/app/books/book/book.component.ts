@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import { Book } from '../book';
 
 
@@ -9,11 +9,22 @@ import { Book } from '../book';
 })
 export class BookComponent implements OnInit {
 
-  constructor() { }
+  constructor(private elRef: ElementRef) { }
 
   @Input() book : Book;
-
-  ngOnInit() {
+  @Input() isEdit : boolean;
+   ngOnInit() {
   }
 
+  @Output() saveEvent = new EventEmitter<any>();
+
+
+
+
+  saveBook(){
+    console.log("in book "+ this.book.bookName);
+    this.book = new Book();
+   
+   this.saveEvent.emit("success...1");
+  }
 }
