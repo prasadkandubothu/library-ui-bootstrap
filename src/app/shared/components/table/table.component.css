@@ -1,0 +1,25 @@
+.thead-light th {
+    color: #ffffff;
+    background-color: #337ab7;
+    border-color: #0099cc;
+}
+
+.tableHeading{
+    background-color: #337ab7;
+    padding: 10px;
+    color: white;
+}
+
+.floatLeft{
+    float: left;
+}
+
+.floatLeft{
+    float: right;
+}
+
+.thStyle{
+    font-size: 12px;
+    background-color: #337ab747;
+    border-top-color: #337ab747;
+}

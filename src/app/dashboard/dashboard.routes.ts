@@ -1,14 +1,20 @@
 import {RouterModule, Routes} from '@angular/router';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { BooksdashboardComponent } from './booksdashboard/booksdashboard.component';
+import { UsersdashboardComponent } from './usersdashboard/usersdashboard.component';
 
 const dashboardRoutes : Routes =[
     {
         path : '',
-       component :WelcomeComponent   
+        redirectTo : 'books',        
+        
     },
     {
-        path : 'welcome',
-       component : WelcomeComponent
+        path : 'books',
+       component : BooksdashboardComponent
+    },
+    {
+        path : 'users',
+       component : UsersdashboardComponent
     }
 
 ];

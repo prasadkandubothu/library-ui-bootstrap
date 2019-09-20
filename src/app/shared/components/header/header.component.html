@@ -8,8 +8,11 @@
       <ul class="navbar-nav mr-auto">  
         <ng-template [ngIf]="auth.user" [ngIfElse]="loginTemplate">      
             <li class="nav-item" >
-                <a class="nav-link" routerLink="dashboard" routerLinkActive="active">Books</a>
-              </li>
+                <a class="nav-link" routerLink="dashboard/books" routerLinkActive="active">Books</a>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" routerLink="dashboard/users" routerLinkActive="active">Users</a>
+            </li>
             <li class="nav-item" >
               <a class="nav-link" routerLink="prelogin/login" routerLinkActive="active" (click)="logOut()">Logout</a>
             </li>
