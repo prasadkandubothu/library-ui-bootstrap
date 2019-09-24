@@ -1,3 +1,31 @@
-<p>
-  user works!
-</p>
+
+<div class="row">
+    <form>
+
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input id="fname" class="form-control" type="text" name="fname">
+
+        <label for="lname">Last Name</label>
+        <input id="lname" class="form-control" type="text" name="lname">
+
+        <label for="uname">User Name</label>
+        <input id="uname" class="form-control" type="text" name="uname">
+
+        <label for="pwd">Password</label>
+        <input id="pwd" class="form-control" type="text" name="pwd">
+
+        <div class="form-group">
+          <label for="role">User Role</label>
+          <select id="role" class="form-control" name="role">
+            <option>User</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" type="button">Add</button>
+        <button class="btn btn-danger" type="button">Reset</button>
+        <a class="btn btn-warning" type="button" routerLink="../">Back</a>
+      </div>
+      
+    </form>
+</div>

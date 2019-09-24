@@ -5,7 +5,8 @@ import { UsersdashboardComponent } from './usersdashboard/usersdashboard.compone
 const dashboardRoutes : Routes =[
     {
         path : '',
-        redirectTo : 'books',        
+        redirectTo : 'books',
+        pathMatch : 'full'        
         
     },
     {
@@ -14,7 +15,8 @@ const dashboardRoutes : Routes =[
     },
     {
         path : 'users',
-       component : UsersdashboardComponent
+       //component : UsersdashboardComponent
+       loadChildren : '../users/users.module#UsersModule'
     }
 
 ];
