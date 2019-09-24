@@ -14,6 +14,7 @@ export class BookComponent implements OnInit {
   @Input() book : Book;
   @Input() isEdit : boolean;
    ngOnInit() {
+     console.log("isEdit : "+this.isEdit);
   }
 
   @Output() saveEvent = new EventEmitter<any>();

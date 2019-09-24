@@ -6,6 +6,7 @@ import { dashboardModuleRoutes } from './dashboard.routes';
 import { BooksModule } from '../books/books.module';
 import { BooksdashboardComponent } from './booksdashboard/booksdashboard.component';
 import { UsersdashboardComponent } from './usersdashboard/usersdashboard.component';
+import { UsersModule } from '../users/users.module';
 
 @NgModule({
   declarations: [DashboardComponent, BooksdashboardComponent, UsersdashboardComponent],
@@ -13,7 +14,8 @@ import { UsersdashboardComponent } from './usersdashboard/usersdashboard.compone
     CommonModule,
     RouterModule,
     dashboardModuleRoutes,
-    BooksModule
+    BooksModule,
+    UsersModule
   ]
 })
 export class DashboardModule { }

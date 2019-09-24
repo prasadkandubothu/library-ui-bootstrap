@@ -1,6 +1,6 @@
 <div style="width:430px;padding-left:30px;">
   <form autocomplete="off">
-    <div class="form-group">
+    <div class="form-group" *ngIf="isEdit">
           <label for="bookid">Book Id</label>
           <input id="bookid" class="form-control" type="text" name="bookId" [(ngModel)]="book.bookId" [disabled]="isEdit">
     </div>
@@ -17,6 +17,6 @@
         <input id="category" class="form-control" type="text" name="category" [(ngModel)]="book.category">
   </div>
     <button class="btn btn-primary" type="submit" (click)="saveBook()">Save Book</button>
-    <button class="btn btn-danger" type="button" style="margin-left : 10px;">Reset</button>
+    <button class="btn btn-danger" type="button" style="margin-left : 10px;" *ngIf="!isEdit">Reset</button>
   </form>
 </div>

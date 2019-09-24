@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { TableService } from './table.service';
+
 
 @Component({
   selector: 'app-table',
@@ -7,47 +9,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tableService : TableService) { }
 
-  tableHeading : string = "Books Details";
+  selectedItem : any;
+  @Input()
+  actionColumn : boolean = false;
+  @Input()
+  tableHeading: string = "Sample Table Heading";
   searchText: string = "";
-  columns : string[] = ["BOOK ID", "BOOK NAME", "AUTHOR NAME", "CATEGORY", "ID"];
-  rows : any[] = [{"bookId": "1",
-      "bookName": "Java by James",
-      "author": "James",
-      "category": "coding",
-      "id": 1
-    },
-    {
-      "id": 2,
-      "bookId": "2",
-      "bookName": "Wndiows by Gates",
-      "author": "Gates",
-      "publications": "Vikram Publications",
-      "category": "coding"
-    },
-    {
-      "id": 3,
-      "bookId": "3",
-      "bookName": "C by Dennies",
-      "author": "Dennies",
-      "publications": "Vikram Publications",
-      "category": "coding"
-    },
-    {
-      "id": 4,
-      "bookId": "4",
-      "bookName": "CPU by Charles",
-      "author": "Charles",
-      "publications": "Vikram Publications",
-      "category": "coding"
-    }
-  ]
-  keys : any[];
+  @Output()
+  selectBookEvent = new EventEmitter();
+  @Input()
+  columns : string[] =[];
+  @Input()
+  rows : any[] = [];
+  @Input()
+  keys : any[] = [];
+
+  @Input()
+  searchColumns : string [] = [];
+  
+  @Input()
+  isFilterDisplay : boolean = false;
+
+  @Input()
+  filterColumns : string [] = [];
+
+  @Input()
+  filterOptions : any[] = [];
+
+  filterVal = "";
 
 
   ngOnInit() {
-    this.keys = Object.keys(this.rows[0]);
+    //this.keys = Object.keys(this.rows[0]);
+    //this.searchText = this.bookStatusFilter;
+  }
+  /*filterChange(){
+    this.searchText = this.filterVal;
+  }*/
+
+  selectedItemDetails(selectedItem){
+    this.selectedItem = selectedItem;
+    console.log("in table : "+this.selectedItem);
+    this.selectBookEvent.emit(this.selectedItem);
   }
 
+  clearSelectedRadioButtons(){
+
+    if(document.querySelectorAll<HTMLInputElement>("input[name=actionRadio]:checked").length > 0)
+    {
+      document.querySelectorAll<HTMLInputElement>("input[name=actionRadio]:checked")[0].checked = false;
+    }
+  }
 }

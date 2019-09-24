@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ApphttpclientService } from 'src/app/apphttpclient.service';
 import { Router } from '@angular/router';
 import { AuthenticationModel } from 'src/app/AuthenticationModel';
+import { AppToastrService } from 'src/app/app-toastr.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   password:string;
   userData : any;
   
-  constructor(private client : ApphttpclientService, private router : Router, private authModel : AuthenticationModel) { }
+  constructor(private toastr : AppToastrService ,private client : ApphttpclientService, private router : Router, private authModel : AuthenticationModel) { }
   login : any;
   ngOnInit() {
   }
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('dashboard');
       });
     }
+   
     }
   }
 

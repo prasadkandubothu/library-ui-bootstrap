@@ -1,33 +1,18 @@
 <div class="container-fluid">
   
    <!-- Admin operational buttons-->
-    <div class="row" *ngIf="auth.user && auth.role == 'admin'">
+    <div class="container-fluid" *ngIf="auth.user && auth.role == 'admin'">
         <div style="padding-top :20px;">
             <button type="button" class="btn btn-info btnMargin" data-toggle="modal" data-target="#myModal" (click)="addBook()"> <span class="glyphicon glyphicon-plus"></span> Add Book</button>
             <button type="button" class="btn btn-warning btnMargin" data-toggle="modal" data-target="#myModal" (click)="editBook($event)">Edit Book</button>
-            <button class="btn btn-danger btnMargin" type="button" style="margin-left:10px;">Delete</button> 
+            <button class="btn btn-danger btnMargin" type="button">Delete</button> 
         </div> 
     </div>
 
     <br/>
-  <!--  <div class="row">
-    <table class="table">
-      <tbody>
-        <tr *ngFor="let book of books">
-          <td><input type="radio" name="bookInfo" (click)="selectedBookDetails(book)"/></td>
-          <td>{{book.id}}</td>
-          <td>{{book.bookId}}</td>
-          <td>{{book.bookName}}</td>
-          <td>{{book.author}}</td>
-          <td>{{book.category}}</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
--->
-
-<app-table></app-table>
-
+ 
+<app-table [isFilterDisplay]="true" [filterColumns]="filterColumns" [filterOptions]="filterOptions"
+[searchColumns]="searchColumns" [keys]="keys" [columns]="bookColumns" [tableHeading]="tableHeading" [rows]="books" [actionColumn]="actionColumn" (selectBookEvent)="selectedBookDetails($event)"></app-table>
 </div>
 
 

@@ -6,10 +6,11 @@ import { RouterModule } from '@angular/router';
 import { TableComponent } from './components/table/table.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from './components/table/search.pipe';
+import { FilterPipe } from './components/table/filter.pipe';
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, TableComponent, SearchPipe],
+  declarations: [HeaderComponent, FooterComponent, TableComponent, SearchPipe, FilterPipe],
   imports: [
     CommonModule,
     RouterModule,

@@ -41,7 +41,8 @@
       "bookName": "Java by James",
       "author": "James",
       "category": "coding",
-      "id": 1
+      "id": 1,
+      "bookStatus" : "AVAILABLE"
     },
     {
       "id": 2,
@@ -49,7 +50,8 @@
       "bookName": "Wndiows by Gates",
       "author": "Gates",
       "publications": "Vikram Publications",
-      "category": "coding"
+      "category": "coding",
+      "bookStatus" : "ISSUED"
     },
     {
       "id": 3,
@@ -57,7 +59,8 @@
       "bookName": "C by Dennies",
       "author": "Dennies",
       "publications": "Vikram Publications",
-      "category": "coding"
+      "category": "coding",
+      "bookStatus" : "RESERVED"
     },
     {
       "id": 4,
@@ -65,7 +68,8 @@
       "bookName": "CPU by Charles",
       "author": "Charles",
       "publications": "Vikram Publications",
-      "category": "coding"
+      "category": "coding",
+      "bookStatus" : "AVAILABLE"
     }
   ]
 }

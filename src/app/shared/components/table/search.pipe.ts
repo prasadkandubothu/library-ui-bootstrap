@@ -16,7 +16,14 @@ export class SearchPipe implements PipeTransform {
 
     
     return value.filter(val => {
-      return (val[searchColumns[0]].toLowerCase().includes(searchText) || val[searchColumns[1]].toLowerCase().includes(searchText))
+     
+      const resultColArray=searchColumns.filter(key => {
+        return val[key].toLowerCase().includes(searchText);
+      });
+      if(resultColArray.length > 0)
+        return true;
+      else
+        return false;
     });
   }
 
