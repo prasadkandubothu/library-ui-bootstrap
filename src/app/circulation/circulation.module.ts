@@ -4,15 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { IssuebookComponent } from './issuebook/issuebook.component';
 import { ReturnbookComponent } from './returnbook/returnbook.component';
-import { CirculationComponent } from './circulation/circulation.component';
+import { CirculationComponent } from './circulation.component';
+import { CirculationRoutingModule } from './circulation-routing.module';
+import { CirculationlistComponent } from './circulationlist/circulationlist.component';
 
 @NgModule({
-  declarations: [IssuebookComponent, ReturnbookComponent, CirculationComponent],
+  declarations: [IssuebookComponent, ReturnbookComponent, CirculationComponent, CirculationlistComponent],
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    CirculationRoutingModule  
   ],
-  exports : [IssuebookComponent, ReturnbookComponent, CirculationComponent]
+  exports : [IssuebookComponent, ReturnbookComponent, CirculationComponent, CirculationlistComponent]
 })
-export class BooksModule { }
+export class CirculationModule { }

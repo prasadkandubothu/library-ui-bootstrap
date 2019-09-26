@@ -17,6 +17,10 @@ const dashboardRoutes : Routes =[
         path : 'users',
        //component : UsersdashboardComponent
        loadChildren : '../users/users.module#UsersModule'
+    },
+    {
+        path : 'circulation',
+        loadChildren : '../circulation/circulation.module#CirculationModule'
     }
 
 ];

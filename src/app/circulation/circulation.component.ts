@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationModel } from '../AuthenticationModel';
 
 @Component({
   selector: 'app-circulation',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CirculationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth : AuthenticationModel) { }
 
   ngOnInit() {
   }

@@ -7,10 +7,11 @@ import { TableComponent } from './components/table/table.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from './components/table/search.pipe';
 import { FilterPipe } from './components/table/filter.pipe';
+import { SpinnerDirective } from './directives/spinner.directive';
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, TableComponent, SearchPipe, FilterPipe],
+  declarations: [HeaderComponent, FooterComponent, TableComponent, SearchPipe, FilterPipe, SpinnerDirective],
   imports: [
     CommonModule,
     RouterModule,

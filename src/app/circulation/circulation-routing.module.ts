@@ -2,30 +2,38 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IssuebookComponent } from './issuebook/issuebook.component';
 import { ReturnbookComponent } from './returnbook/returnbook.component';
-import { CirculationComponent } from './circulation/circulation.component';
+import { CirculationComponent } from './circulation.component';
+import { CirculationlistComponent } from './circulationlist/circulationlist.component';
 
-const routes: Routes = [
+const circulationRoutes: Routes = [
   {
     path : '',
-    redirectTo : 'circulation',
+    redirectTo : 'list',
     pathMatch : 'full'
   },
+ 
   {
-    path : 'issue',
-    component : IssuebookComponent
-  }, 
-  {
-    path : 'return',
-    component : ReturnbookComponent
-  }, 
-  {
-    path : 'circulation',
-    component : CirculationComponent
+    path : 'list',
+    component : CirculationComponent,
+    children : [
+      {
+          path : '',
+          component : CirculationlistComponent
+      },
+      {
+        path : 'issue',
+        component : IssuebookComponent
+      }, 
+      {
+        path : 'return',
+        component : ReturnbookComponent
+      }, 
+    ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(circulationRoutes)],
   exports: [RouterModule]
 })
 export class CirculationRoutingModule { }
