@@ -4,6 +4,7 @@ import { ApphttpclientService } from 'src/app/apphttpclient.service';
 import { Router } from '@angular/router';
 import { AuthenticationModel } from 'src/app/AuthenticationModel';
 import { AppToastrService } from 'src/app/app-toastr.service';
+import { LoaderService } from 'src/app/loader.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   password:string;
   userData : any;
   
-  constructor(private toastr : AppToastrService ,private client : ApphttpclientService, private router : Router, private authModel : AuthenticationModel) { }
+  constructor(private loader : LoaderService, private toastr : AppToastrService ,private client : ApphttpclientService, private router : Router, private authModel : AuthenticationModel) { }
   login : any;
   ngOnInit() {
   }
@@ -28,9 +29,12 @@ export class LoginComponent implements OnInit {
        console.log("user details "+user[0]);
       });*/
       if(form.value.username == "admin"){
+        
+        this.loader.loaderStart();
       this.client.get('login/2').subscribe(user => { console.log(user);
         this.authModel.setUserDetails(user);
         this.authModel.setUserRole(user['role']);
+        this.loader.loaderEnd();
         this.router.navigateByUrl('dashboard');
       });
     }else {

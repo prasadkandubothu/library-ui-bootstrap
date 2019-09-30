@@ -6,6 +6,7 @@ import { TableService } from 'src/app/shared/components/table/table.service';
 import { TableComponent } from 'src/app/shared/components/table/table.component';
 import { ToastrService } from 'ngx-toastr';
 import { AppToastrService } from 'src/app/app-toastr.service';
+import { LoaderService } from 'src/app/loader.service';
 
 @Component({
   selector: 'app-bookslist',
@@ -28,28 +29,32 @@ export class BookslistComponent implements OnInit {
   searchColumns : string [] = ['bookId', 'bookName'];  
   filterColumns : string [] = ['bookStatus'];
   filterOptions : string [] = ['AVAILABLE', 'ISSUED', 'RESERVED']
+  isLoaderDisplay : boolean = false;
 
   @ViewChild(TableComponent)
   tableComponent : TableComponent;
 
   constructor(private toastr : AppToastrService,private _httpService : ApphttpclientService, private auth :AuthenticationModel,
-    private tableService : TableService) {
+    private tableService : TableService, private loader : LoaderService) {
    this.selectedBook = new Book();
+   this.loader.isLoaderDisplay = true;
+   this._httpService.get("books").subscribe((res) => {
+    this.loader.isLoaderDisplay = false;
+    this.books = res;
+  
+  });
+  console.log("get books server call made");
+  console.log(this.auth.getUserRole());
+  if(this.auth.getUserRole() == "admin")
+    this.actionColumn =true;
+  else
+    this.actionColumn=false;
+ 
    }
 
   
   ngOnInit(): void {
-    this._httpService.get("books").subscribe((res) => {
-      this.books = res;
-   
-    });
     
-    console.log(this.auth.getUserRole());
-    if(this.auth.getUserRole() == "admin")
-      this.actionColumn =true;
-    else
-      this.actionColumn=false;
-   
   }
 
   /**

@@ -10,7 +10,7 @@
               </select>
             <input id="searchInput" type="text" name="searchInput" [(ngModel)]="searchText" placeholder="Search by BookId/Name" style="border: none;outline-color: #719ECE;" autocomplete="off">
           </div>
-          <div class="floatRight">{{tableHeading}} <span class="glyphicon glyphicon-th-list"></span> </div>
+          <div class="floatRight">{{tableHeading}} <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
         </div>        
             <table class="table table-striped table-bordered" style="table-layout: fixed;font-size: 14px;">               
                 <thead>

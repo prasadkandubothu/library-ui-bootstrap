@@ -17,7 +17,7 @@
                       <label for="password">Password</label>
                       <input id="password" class="form-control" type="password" name="password" ngModel>
                     </div>
-                    <button class="btn btn-primary">Login</button>
+                    <button class="btn btn-primary" [disabled]="loader.isLoaderDisplay">Login <div style="width:18px;height:18px;"class="spinner-border" *ngIf="loader.isLoaderDisplay"></div></button>
                     <button class="btn btn-danger" type="reset" style="margin-left:10px;">Reset</button>
                   </form>
             </div>

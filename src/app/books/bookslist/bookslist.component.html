@@ -11,7 +11,7 @@
 
     <br/>
  
-<app-table [isFilterDisplay]="true" [filterColumns]="filterColumns" [filterOptions]="filterOptions"
+<app-table [isLoaderDisplay]="isLoaderDisplay" [isFilterDisplay]="true" [filterColumns]="filterColumns" [filterOptions]="filterOptions"
 [searchColumns]="searchColumns" [keys]="keys" [columns]="bookColumns" [tableHeading]="tableHeading" [rows]="books" [actionColumn]="actionColumn" (selectBookEvent)="selectedBookDetails($event)"></app-table>
 </div>
 

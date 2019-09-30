@@ -38,6 +38,9 @@ export class TableComponent implements OnInit {
   @Input()
   filterOptions : any[] = [];
 
+  @Input()
+  isLoaderDisplay : boolean = false;
+
   filterVal = "";
 
 
