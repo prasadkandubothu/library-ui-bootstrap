@@ -37,12 +37,14 @@ export class BookslistComponent implements OnInit {
   constructor(private toastr : AppToastrService,private _httpService : ApphttpclientService, private auth :AuthenticationModel,
     private tableService : TableService, private loader : LoaderService) {
    this.selectedBook = new Book();
-   this.loader.isLoaderDisplay = true;
+   this.isLoaderDisplay = true;
    this._httpService.get("books").subscribe((res) => {
-    this.loader.isLoaderDisplay = false;
+    this.isLoaderDisplay = false;
     this.books = res;
   
   });
+  
+  
   console.log("get books server call made");
   console.log(this.auth.getUserRole());
   if(this.auth.getUserRole() == "admin")

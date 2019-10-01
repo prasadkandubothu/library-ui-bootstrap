@@ -16,7 +16,9 @@
         <label for="category">Category</label>
         <input id="category" class="form-control" type="text" name="category" [(ngModel)]="book.category">
   </div>
-    <button class="btn btn-primary" type="submit" (click)="saveBook()">Save Book</button>
+    <button class="btn btn-primary" type="submit" (click)="saveBook()">Save Book 
+      <div style="width:18px;height:18px;"class="spinner-border" *ngIf="loader.isLoaderDisplay"></div>
+    </button>
     <button class="btn btn-danger" type="button" style="margin-left : 10px;" *ngIf="!isEdit">Reset</button>
   </form>
 </div>

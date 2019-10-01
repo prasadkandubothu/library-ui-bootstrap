@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { TableService } from './table.service';
 
 
@@ -7,7 +7,7 @@ import { TableService } from './table.service';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges {
 
   constructor(private tableService : TableService) { }
 
@@ -43,7 +43,9 @@ export class TableComponent implements OnInit {
 
   filterVal = "";
 
-
+ngOnChanges(){
+  console.log("table loader : "+this.isLoaderDisplay);
+}
   ngOnInit() {
     //this.keys = Object.keys(this.rows[0]);
     //this.searchText = this.bookStatusFilter;
