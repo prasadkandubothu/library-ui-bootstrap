@@ -5,34 +5,30 @@
       "lastname": "prasad",
       "username": "prasad",
       "password": "prasad",
-      "role": "user"
+      "role": "user",
+      "id" : 2
     },
     {
       "firstname": "admin",
       "lastname": "admin",
       "username": "admin",
       "password": "admin",
-      "role": "admin"
+      "role": "admin",
+      "id" : 1
     }
   ],
-  "login": [
+  "roles"  : [
     {
-      "id": 1,
-      "username": "prasad",
-      "password": "prasad",
-      "role": "user"
+      "roleId" : 1,
+      "roleName" : "admin"
     },
     {
-      "id": 2,
-      "username": "admin",
-      "password": "admin",
-      "role": "admin"
+      "roleId" : 2,
+      "roleName" : "user"
     },
     {
-      "id": 3,
-      "username": "admin",
-      "password": "admin",
-      "role": "user"
+      "roleId" : 3,
+      "roleName" : "librarian"
     }
   ],
   "books": [
@@ -70,6 +66,13 @@
       "publications": "Vikram Publications",
       "category": "coding",
       "bookStatus" : "AVAILABLE"
+    }
+  ], 
+  "circulation" : [
+    {
+      "id" : 1,
+      "userId" : 2,
+      "bookId" : 4
     }
   ]
 }
