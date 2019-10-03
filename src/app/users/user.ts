@@ -1,7 +1,10 @@
 
 
 export class User{
-    private userId : number;
+    private id : number;
+    private firstname : string;
+    private lastname : string;
     private username : string;
     private role : any;
+    private password : string;
 }

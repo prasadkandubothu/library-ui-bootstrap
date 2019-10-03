@@ -6,13 +6,14 @@ import { UserComponent } from './user/user.component';
 import { UserslistComponent } from './userslist/userslist.component';
 import { SharedModule } from '../shared/shared.module';
 import { UsersmainComponent } from './usersmain.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [UserComponent, UserslistComponent, UsersmainComponent],
   imports: [
     CommonModule,
     SharedModule,
-    UsersRoutingModule
+    UsersRoutingModule,FormsModule
   ],
   exports:[UsersmainComponent]
 })

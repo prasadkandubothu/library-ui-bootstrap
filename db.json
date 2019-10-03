@@ -6,7 +6,7 @@
       "username": "prasad",
       "password": "prasad",
       "role": "user",
-      "id" : 2
+      "id": 2
     },
     {
       "firstname": "admin",
@@ -14,65 +14,82 @@
       "username": "admin",
       "password": "admin",
       "role": "admin",
-      "id" : 1
+      "id": 1
     }
   ],
-  "roles"  : [
+  "roles": [
     {
-      "roleId" : 1,
-      "roleName" : "admin"
+      "roleId": 1,
+      "roleName": "admin"
     },
     {
-      "roleId" : 2,
-      "roleName" : "user"
+      "roleId": 2,
+      "roleName": "user"
     },
     {
-      "roleId" : 3,
-      "roleName" : "librarian"
+      "roleId": 3,
+      "roleName": "librarian"
     }
   ],
   "books": [
     {
-      "bookId": "1222",
       "bookName": "Java by James",
       "author": "James",
       "category": "coding",
       "id": 1,
-      "bookStatus" : "AVAILABLE"
+      "bookStatus": "AVAILABLE"
     },
     {
       "id": 2,
-      "bookId": "2",
       "bookName": "Wndiows by Gates",
       "author": "Gates",
       "publications": "Vikram Publications",
       "category": "coding",
-      "bookStatus" : "ISSUED"
+      "bookStatus": "ISSUED"
     },
     {
       "id": 3,
-      "bookId": "3",
       "bookName": "C by Dennies",
       "author": "Dennies",
       "publications": "Vikram Publications",
       "category": "coding",
-      "bookStatus" : "RESERVED"
+      "bookStatus": "RESERVED"
     },
     {
       "id": 4,
-      "bookId": "4",
       "bookName": "CPU by Charles",
       "author": "Charles",
       "publications": "Vikram Publications",
       "category": "coding",
-      "bookStatus" : "AVAILABLE"
-    }
-  ], 
-  "circulation" : [
+      "bookStatus": "AVAILABLE"
+    },
     {
-      "id" : 1,
-      "userId" : 2,
-      "bookId" : 4
+      "bookName": "ttt",
+      "author": "tt",
+      "category": "tt",
+      "id": 5,
+      "bookStatus": "AVAILABLE"
+    },
+    {
+      "bookStatus": "AVAILABLE",
+      "bookName": "rr",
+      "author": "rr",
+      "category": "rr",
+      "id": 6
+    },
+    {
+      "bookStatus": "AVAILABLE",
+      "bookName": "sdfgsdf",
+      "author": "gsdfg",
+      "category": "sdfg",
+      "id": 7
+    }
+  ],
+  "circulation": [
+    {
+      "id": 1,
+      "userId": 2,
+      "bookId": 4
     }
   ]
 }

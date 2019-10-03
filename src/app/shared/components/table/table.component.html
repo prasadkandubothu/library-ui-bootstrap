@@ -28,7 +28,7 @@
                       {{row[key]}}
                     </td>
                   </tr>
-                  <tr *ngIf="rows !== undefined && (rows | search : searchText : ['bookId', 'bookName']).length == 0">
+                  <tr *ngIf="rows !== undefined && (rows | search : searchText : searchColumns).length == 0">
                     <td [attr.colspan]="actionColumn == true ? columns.length + 1 : columns.length">No Records Found</td>
                   </tr>
                 </tbody>

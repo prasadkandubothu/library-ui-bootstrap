@@ -3,6 +3,9 @@ import { AppToastrService } from 'src/app/app-toastr.service';
 import { TableService } from 'src/app/shared/components/table/table.service';
 import { ApphttpclientService } from 'src/app/apphttpclient.service';
 import { AuthenticationModel } from 'src/app/AuthenticationModel';
+import { UserService } from '../user.service';
+import { User } from '../user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-userslist',
@@ -12,23 +15,26 @@ import { AuthenticationModel } from 'src/app/AuthenticationModel';
 export class UserslistComponent implements OnInit {
 
   constructor(private toastr : AppToastrService,private _httpService : ApphttpclientService, private auth :AuthenticationModel,
-    private tableService : TableService) { }
+    private tableService : TableService, private userService : UserService) { }
 
-    users : any;
+   
 
   //table component inputs
   actionColumn = false;
-  tableHeading : string = "Books Details"
-  bookColumns = ["BOOK ID", "BOOK NAME", "AUTHOR NAME", "CATEGORY", "ID", "BOOK STATUS"];
-  books : any;
-  keys = ["bookId", "bookName", "author","category","id", "bookStatus"];
-  searchColumns : string [] = ['bookId', 'bookName'];  
-  filterColumns : string [] = ['bookStatus'];
+  tableHeading : string = "User Details"
+  userColumns = ["USER ID", "USER NAME", "FIRST NAME", "LAST NAME", "ROLE"];
+  users : User[];
+  keys = ["id", "username", "firstname","lastname","role"];
+  searchColumns : string [] = ['id', 'username'];  
+  //filterColumns : string [] = ['bookStatus'];
+  isLoaderDisplay : boolean = false;
 
     ngOnInit() {
-      this._httpService.get("users").subscribe((res) => {
-        this.users = res;
-    });
+      this.isLoaderDisplay = true;
+     this.users = this.userService.getUsersInitData();console.log(this.users);
+     this.isLoaderDisplay = false;
   }
+
+  
 
 }

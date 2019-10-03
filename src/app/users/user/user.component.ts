@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { Role } from '../role';
+import { User } from '../user';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService : UserService) { }
 
+  roles : Role[];
+  user : User ;
+  
   ngOnInit() {
+   this.roles = this.userService.rolesInitData();
+  }
+
+  saveUser(){
+    
   }
 
 }

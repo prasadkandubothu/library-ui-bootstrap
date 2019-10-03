@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
       console.log(res);
     });
     this._httpService.get("users").subscribe((res) => {
-      console.log(res);
+      console.log("users "+res);
     });
   }
 }

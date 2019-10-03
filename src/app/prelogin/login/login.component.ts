@@ -31,14 +31,14 @@ export class LoginComponent implements OnInit {
       if(form.value.username == "admin"){
         
         this.loader.loaderStart();
-      this.client.get('login/2').subscribe(user => { console.log(user);
+      this.client.get('users/1').subscribe(user => { console.log(user);
         this.authModel.setUserDetails(user);
         this.authModel.setUserRole(user['role']);
         this.loader.loaderEnd();
         this.router.navigateByUrl('dashboard');
       });
     }else {
-      this.client.get('login/1').subscribe(user => { console.log(user['role']);
+      this.client.get('users/2').subscribe(user => { console.log(user['role']);
         this.authModel.setUserDetails(user);
         this.authModel.setUserRole(user['role']);
         this.router.navigateByUrl('dashboard');

@@ -1,31 +1,41 @@
 
-<div class="row">
-    <form>
+<div class="row" style="padding-top:8%;">
+  <div class="col-md-3 offset-md-2">
+  </div>
+  <div class="col-md-3">
+      <div class="card">
+          <div class="card-header" style="color:whitesmoke; background-color: #347ab7!important;">Add User Here</div>
+          <div class="card-body">
+              <form autocomplete="off">
+                <div class="form-group">
+                  <label for="fname">First Name</label>
+                  <input id="fname" class="form-control" type="text" name="firstname" [(ngModel)]="user.firstname">
 
-      <div class="form-group">
-        <label for="fname">First Name</label>
-        <input id="fname" class="form-control" type="text" name="fname">
+                  <label for="lname">Last Name</label>
+                  <input id="lname" class="form-control" type="text" name="lastname" [(ngModel)]="user.lastname">
 
-        <label for="lname">Last Name</label>
-        <input id="lname" class="form-control" type="text" name="lname">
+                  <label for="uname">User Name</label>
+                  <input id="uname" class="form-control" type="text" name="uname">
 
-        <label for="uname">User Name</label>
-        <input id="uname" class="form-control" type="text" name="uname">
+                  <label for="pwd">Password</label>
+                  <input id="pwd" class="form-control" type="text" name="pwd">
 
-        <label for="pwd">Password</label>
-        <input id="pwd" class="form-control" type="text" name="pwd">
+                  <div class="form-group">
+                    <label for="role">User Role</label>
+                    <select id="role" class="form-control" name="role">
+                      <option>User</option>
+                    </select>
+                  </div>
 
-        <div class="form-group">
-          <label for="role">User Role</label>
-          <select id="role" class="form-control" name="role">
-            <option>User</option>
-          </select>
-        </div>
-
-        <button class="btn btn-primary" type="button">Add</button>
-        <button class="btn btn-danger" type="button">Reset</button>
-        <a class="btn btn-warning" type="button" routerLink="../">Back</a>
-      </div>
+                  <button class="btn btn-info" type="button" >Add</button>
+                  <button class="btn btn-danger" type="reset" style="margin-left:10px;">Reset</button>
+                  <button class="btn btn-warning" type="button" routerLink="../" style="margin-left:10px;">Back</button>
+                </div>      
+              </form>
+          </div>
+         </div>
       
-    </form>
+  </div>
+  <div class="col-md-3 offset-md-1">
+    </div>
 </div>

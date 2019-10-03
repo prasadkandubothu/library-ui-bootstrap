@@ -23,10 +23,10 @@ export class BookslistComponent implements OnInit {
   //table component inputs
   actionColumn = false;
   tableHeading : string = "Books Details"
-  bookColumns = ["BOOK ID", "BOOK NAME", "AUTHOR NAME", "CATEGORY", "ID", "BOOK STATUS"];
+  bookColumns = [ "ID", "BOOK NAME", "AUTHOR NAME", "CATEGORY", "BOOK STATUS"];
   books : any;
-  keys = ["bookId", "bookName", "author","category","id", "bookStatus"];
-  searchColumns : string [] = ['bookId', 'bookName'];  
+  keys = ["id",  "bookName", "author","category", "bookStatus"];
+  searchColumns : string [] = ['id', 'bookName'];  
   filterColumns : string [] = ['bookStatus'];
   filterOptions : string [] = ['AVAILABLE', 'ISSUED', 'RESERVED']
   isLoaderDisplay : boolean = false;
