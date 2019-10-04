@@ -44,7 +44,7 @@ export class BookslistComponent implements OnInit {
   
   });
   
-  
+  console.log("Book List constructor=================================");
   console.log("get books server call made");
   console.log(this.auth.getUserRole());
   if(this.auth.getUserRole() == "admin")

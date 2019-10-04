@@ -9,11 +9,17 @@ import { User } from '../user';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
-  constructor(private userService : UserService) { }
-
   roles : Role[];
   user : User ;
+
+  constructor(private userService : UserService) {
+    if(!this.user){
+      console.log("cons...called");
+      this.user = new User();
+    }
+   }
+
+
   
   ngOnInit() {
    this.roles = this.userService.rolesInitData();

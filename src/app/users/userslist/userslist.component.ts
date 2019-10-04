@@ -31,7 +31,7 @@ export class UserslistComponent implements OnInit {
 
     ngOnInit() {
       this.isLoaderDisplay = true;
-     this.users = this.userService.getUsersInitData();console.log(this.users);
+     this.users = this.userService.usersInitData();console.log(this.users);
      this.isLoaderDisplay = false;
   }
 

@@ -12,10 +12,16 @@ export class UserService {
 
   users : User [] = [];
   roles : Role [] = [];
+  //
 
   usersInitData(){
-    if(this.users.length ==0){
+    console.log("users length : "+this.users.length);
+    if(this.users.length == 0){ console.log("no users in array");
       this.getAllUsers();
+      console.log("users ::: "+this.users);
+    }
+    else{
+      console.log("no users in array else condition");
     }
     return this.users;
   }
@@ -27,11 +33,10 @@ export class UserService {
     return this.roles;
   }
 
-  getAllUsers() : User[]{
-    this.httpClientService.get('users').subscribe((res : User[]) => {
+  getAllUsers() {
+    this.httpClientService.get('users').subscribe((res : User[]) => { console.log("response : "+res)
       this.users = res;
     });
-  return this.users;
   }
 
 
