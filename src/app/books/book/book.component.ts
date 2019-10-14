@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@ang
 import { Book } from '../book';
 import { LoaderService } from 'src/app/loader.service';
 import { ApphttpclientService } from 'src/app/apphttpclient.service';
+import { BookService } from '../book.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { ApphttpclientService } from 'src/app/apphttpclient.service';
 })
 export class BookComponent implements OnInit {
 
-  constructor(private elRef: ElementRef, private loader : LoaderService, private httpClientService : ApphttpclientService) { }
+  constructor(private bookService : BookService, private elRef: ElementRef, private loader : LoaderService, private httpClientService : ApphttpclientService) { }
 
   @Input() book : Book;
   @Input() isEdit : boolean;
@@ -27,17 +28,23 @@ export class BookComponent implements OnInit {
   saveBook(){
     this.loader.loaderStart();
     console.log("in book "+ this.book);
-    if(this.isEdit){
-      this.httpClientService.put('books/'+this.book.id, this.book);
+    if(this.isEdit){ console.log("edit book called...****"+ this.book.id);
+      this.httpClientService.put('books/'+this.book.id, this.book).subscribe(res => {
+        console.log("book updated" + res);
+        this.bookService.getAllBooks();
+      });
     }
-    else{
+    else{ 
     this.httpClientService.post('books', this.book).subscribe(res => {
       console.log(res);
-      console.log("book saved")
+      console.log("book saved");
+      this.bookService.getAllBooks();
     });
   }
+   
     this.book = new Book();
     this.loader.loaderEnd();
    this.saveEvent.emit("success...1");
+   
   }
 }

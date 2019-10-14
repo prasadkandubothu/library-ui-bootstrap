@@ -2,9 +2,44 @@
   
      
       <div style="margin-top:75px;">
-       
+       <!--
         <app-table [isLoaderDisplay]="isLoaderDisplay" [isFilterDisplay]="false"
 [searchColumns]="searchColumns" [keys]="keys" [columns]="userColumns" [tableHeading]="tableHeading" [rows]="users" [actionColumn]="actionColumn"></app-table>
+-->
 
+<div class="container-fluid" style="height: 600px;overflow-y: overlay;">
+      <div class="panel panel-primary">
+          <div class="tableHeading">
+            <div class="floatLeft">
+               
+              <input id="searchInput" type="text" name="searchInput" [(ngModel)]="searchText" placeholder="Search by BookId/Name" style="border: none;outline-color: #719ECE;" autocomplete="off">
+            </div>
+            <div class="floatRight">User Details <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
+          </div>        
+              <table class="table table-striped table-bordered" style="table-layout: fixed;font-size: 14px;">               
+                  <thead>
+                    <tr>
+                      <th *ngFor="let col of userColumns" class="thStyle">{{col}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let user of users | search : searchText : searchColumns"> 
+                        <td>{{user.id}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.firstname}}</td>
+                        <td>{{user.lastname}}</td>
+                        <td>{{user.role}}</td>
+                        <td> <i class="fas fa-pencil-alt" style="color:#347ab7" (click)="editUser(user)"></i></td>
+                        <td> <i class="fas fa-trash" style="color:rgb(182, 52, 52)" (click)="deleteUser(user)"></i></td>
+
+                        <tr *ngIf="(users | search : searchText : searchColumns).length == 0">
+                              <td [attr.colspan]="userColumns.length">No Records Found</td>
+                            </tr>
+                  </tbody>
+                </table>
+               
+          </div>
+        </div>
+  
       </div>      
      </div>

@@ -15,6 +15,6 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     UsersRoutingModule,FormsModule
   ],
-  exports:[UsersmainComponent]
+  exports:[UsersmainComponent, UserComponent]
 })
 export class UsersModule { }

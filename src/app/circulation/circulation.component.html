@@ -2,18 +2,13 @@
   
   <ng-template [ngIf]="auth.role == 'user'">
 
-   
       <div style="margin-top:20px;float:right">
-            <a class="anchorStyle" routerLinkActive="active" routerLink="return">Return Book</a>       
+          <a class="anchorStyle"  routerLinkActive="subMenuActive" routerLink="issue">Request Book</a>       
       </div>
-
+<!-- 
       <div style="margin-top:20px;float:right">
-          <a class="anchorStyle"  routerLinkActive="active" routerLink="issue">Request Book</a>       
-      </div>
-
-      <div style="margin-top:20px;float:right">
-          <a class="anchorStyle"  routerLinkActive="active" routerLink="../">Issued Books</a>       
-      </div>
+          <a class="anchorStyle"  routerLinkActive="subMenuActive" routerLink="/dashboard/circulation">Issued Books</a>       
+      </div> -->
 
 </ng-template>
  

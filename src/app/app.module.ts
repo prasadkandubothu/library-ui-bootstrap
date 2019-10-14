@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { appModuleRoutes } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ToastrModule } from 'ngx-toastr';
+import { AutocompleteModule } from 'ng2-input-autocomplete';
 
 @NgModule({
   declarations: [

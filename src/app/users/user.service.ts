@@ -2,28 +2,45 @@ import { Injectable } from '@angular/core';
 import { ApphttpclientService } from '../apphttpclient.service';
 import { User } from './user';
 import { Role } from './role';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private httpClientService : ApphttpclientService) { }
-
+ 
   users : User [] = [];
   roles : Role [] = [];
+
+
+  //usersData : User [] = [];
+
+  private usersDataSubject = new BehaviorSubject<User[]>([]);
+  private rolesDataSubject = new BehaviorSubject<Role[]>([]);
+
+  constructor(private httpClientService : ApphttpclientService) { 
+    this.initUsersData();
+    this.initRolesData();
+
+  }
+
   //
 
-  usersInitData(){
-    console.log("users length : "+this.users.length);
-    if(this.users.length == 0){ console.log("no users in array");
-      this.getAllUsers();
-      console.log("users ::: "+this.users);
-    }
-    else{
-      console.log("no users in array else condition");
-    }
-    return this.users;
+  initUsersData(){
+    this.getAllUsers();
+  }
+
+  initRolesData(){
+    this.getAllRoles();
+  }
+
+  getUsersDataSubjectObservable(){
+    return this.usersDataSubject.asObservable();
+  }
+
+  getRolesDataSubjectObservable(){
+    return this.rolesDataSubject.asObservable();
   }
 
   rolesInitData(){
@@ -35,16 +52,40 @@ export class UserService {
 
   getAllUsers() {
     this.httpClientService.get('users').subscribe((res : User[]) => { console.log("response : "+res)
-      this.users = res;
+    this.usersDataSubject.next(res);
     });
   }
 
 
   getAllRoles(){
     this.httpClientService.get('roles').subscribe((res : Role[]) => {
-      this.roles = res;
+      this.rolesDataSubject.next(res);
     });
-    return this.users;
   }
+
+
+  saveUser(user : User){
+    this.httpClientService.post('users', user).subscribe(res => {
+      console.log("user saved successfully");
+      this.getAllUsers();
+    })
+  }
+
+  editUser(user : User, userId : string){ alert("in service : "+userId)
+    this.httpClientService.put('users/'+userId, user).subscribe(res => {
+      console.log("user edit saved successfully");
+      this.getAllUsers();
+    });
+  }
+
+  deleteUser(user : User){
+    this.httpClientService.delete('users/'+user.id).subscribe(res => {
+      console.log("user edeleted successfully");
+      this.getAllUsers();
+    })
+  }
+
+
+
 
 }

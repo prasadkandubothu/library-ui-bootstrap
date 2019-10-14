@@ -20,7 +20,8 @@ import { SpinnerDirective } from './directives/spinner.directive';
   exports : [
     HeaderComponent,
     FooterComponent, 
-    TableComponent
+    TableComponent,
+    SearchPipe
   ]
 })
 export class SharedModule { }

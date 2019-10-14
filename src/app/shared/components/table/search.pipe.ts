@@ -7,7 +7,7 @@ export class SearchPipe implements PipeTransform {
 
   num : number = 0;
   transform(value: any, searchText: any, searchColumns:string[]): any {
-    if(searchText == "")
+    if(searchText == "" || searchText == undefined)
       return value;
     
     this.num = searchColumns.length;

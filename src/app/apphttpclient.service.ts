@@ -19,11 +19,12 @@ export class ApphttpclientService {
     return this._http.post(this.domainURL+endpoint, bodyParams);
   }
 
-  put(endpoint, bodyParams){
-    this._http.put(this.domainURL+endpoint, bodyParams);
+  put(endpoint, bodyParams){console.log(bodyParams+"in put : "+this.domainURL+endpoint)
+    return this._http.put(this.domainURL+endpoint, bodyParams);
   }
 
   delete(endpoint){
-    this._http.delete(this.domainURL+endpoint);
+    return this._http.delete(this.domainURL+endpoint);
   }
+  
 }

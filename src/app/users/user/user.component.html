@@ -1,41 +1,49 @@
 
-<div class="row" style="padding-top:8%;">
+<div class="row" style="padding-top:2%;">
   <div class="col-md-3 offset-md-2">
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
       <div class="card">
           <div class="card-header" style="color:whitesmoke; background-color: #347ab7!important;">Add User Here</div>
           <div class="card-body">
-              <form autocomplete="off">
+              <form autocomplete="off" #f="ngForm" (ngSubmit)="saveUser(f)">
+                <div class="form-group" *ngIf="userId">
+                  <label for="fname">User Id</label>
+                  <input id="fname" class="form-control" type="text" name="id" [(ngModel)]="user.id" disabled>
+                </div>
                 <div class="form-group">
                   <label for="fname">First Name</label>
                   <input id="fname" class="form-control" type="text" name="firstname" [(ngModel)]="user.firstname">
-
+                </div>
+                <div class="form-group">
                   <label for="lname">Last Name</label>
                   <input id="lname" class="form-control" type="text" name="lastname" [(ngModel)]="user.lastname">
-
+                </div>
+                <div class="form-group">
                   <label for="uname">User Name</label>
-                  <input id="uname" class="form-control" type="text" name="uname">
-
+                  <input id="uname" class="form-control" type="text" name="username" [(ngModel)]="user.username" [disabled]="auth.role == 'user'">
+                </div>
+                <div class="form-group">
                   <label for="pwd">Password</label>
-                  <input id="pwd" class="form-control" type="text" name="pwd">
-
+                  <input id="pwd" class="form-control" type="password" name="password" [(ngModel)]="user.password">
+                </div>
                   <div class="form-group">
                     <label for="role">User Role</label>
-                    <select id="role" class="form-control" name="role">
-                      <option>User</option>
+                    <select id="role" class="form-control" name="role" name="role" [(ngModel)]="user.role" [disabled]="auth.role == 'user'">
+                      <option *ngFor="let role of roles">{{role.roleName}}</option>
                     </select>
                   </div>
 
-                  <button class="btn btn-info" type="button" >Add</button>
-                  <button class="btn btn-danger" type="reset" style="margin-left:10px;">Reset</button>
-                  <button class="btn btn-warning" type="button" routerLink="../" style="margin-left:10px;">Back</button>
-                </div>      
+                  <button class="btn btn-info" type="submit" >{{btnTitle}}</button>
+                  <button class="btn btn-danger" type="reset" style="margin-left:10px;" *ngIf="!userId">Reset</button>
+                  <button class="btn btn-warning" type="button" routerLink="/dashboard/users" style="margin-left:10px;" *ngIf="auth.role == 'admin'">Back</button>
+                  <button class="btn btn-warning" type="button" routerLink="/dashboard/books" style="margin-left:10px;" *ngIf="auth.role == 'user'">Back</button>
+                   
               </form>
           </div>
-         </div>
+        
       
   </div>
-  <div class="col-md-3 offset-md-1">
+  <div class="col-md-2 offset-md-1">
     </div>
 </div>

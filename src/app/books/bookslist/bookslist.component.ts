@@ -7,6 +7,8 @@ import { TableComponent } from 'src/app/shared/components/table/table.component'
 import { ToastrService } from 'ngx-toastr';
 import { AppToastrService } from 'src/app/app-toastr.service';
 import { LoaderService } from 'src/app/loader.service';
+import { BookService } from '../book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bookslist',
@@ -15,16 +17,18 @@ import { LoaderService } from 'src/app/loader.service';
 })
 export class BookslistComponent implements OnInit {
 
-
   selectedBook : Book;
   isEdit = false;
   modalWindowTitle = "Add Book";
+  booksAvailable = [];
+  booksNotAvailable = [];
+ 
   
   //table component inputs
   actionColumn = false;
   tableHeading : string = "Books Details"
   bookColumns = [ "ID", "BOOK NAME", "AUTHOR NAME", "CATEGORY", "BOOK STATUS"];
-  books : any;
+  books : Book[] = [];
   keys = ["id",  "bookName", "author","category", "bookStatus"];
   searchColumns : string [] = ['id', 'bookName'];  
   filterColumns : string [] = ['bookStatus'];
@@ -34,16 +38,11 @@ export class BookslistComponent implements OnInit {
   @ViewChild(TableComponent)
   tableComponent : TableComponent;
 
-  constructor(private toastr : AppToastrService,private _httpService : ApphttpclientService, private auth :AuthenticationModel,
+  constructor(private router :Router, private bookService : BookService, private toastr : AppToastrService,private _httpService : ApphttpclientService, private auth :AuthenticationModel,
     private tableService : TableService, private loader : LoaderService) {
    this.selectedBook = new Book();
    this.isLoaderDisplay = true;
-   this._httpService.get("books").subscribe((res) => {
-    this.isLoaderDisplay = false;
-    this.books = res;
-  
-  });
-  
+      
   console.log("Book List constructor=================================");
   console.log("get books server call made");
   console.log(this.auth.getUserRole());
@@ -56,6 +55,14 @@ export class BookslistComponent implements OnInit {
 
   
   ngOnInit(): void {
+
+    this.bookService.getUserDataSubjectObservable().subscribe(res => {
+      this.isLoaderDisplay = false;
+      this.books = res;
+      this.booksAvailable = res.filter(book => book.bookStatus == 'AVAILABLE');
+      this.booksNotAvailable = res.filter(book => book.bookStatus != 'AVAILABLE');
+      
+    });
     
   }
 
@@ -93,6 +100,20 @@ export class BookslistComponent implements OnInit {
     this.isEdit = false;
   }
 
+  deleteBook(){
+    console.log(this.selectedBook.id);
+    if(this.selectedBook.id == undefined)
+    {
+      this.toastr.error("Please select Book to delete");
+      return false;
+    }
+    console.log("book selected to delete "+this.selectedBook.id);
+    this._httpService.delete('books/'+this.selectedBook.id).subscribe(res => {
+      console.log("book deleted "+ res);
+      this.selectedBook = new Book();
+      this.bookService.getAllBooks();});
+  }
+
   /**
    * This method, is used to clear the radiobuttons of table component
    */
@@ -102,11 +123,28 @@ export class BookslistComponent implements OnInit {
     if(this.selectedBook){
       this.selectedBook = new Book();
     }
+    
   }
 
   saveBookAck($event){
+   
     document.getElementById("closePopup").click();
     console.log("--"+$event);
   }
+
+
+  // getUserBooks(){
+  //   this.bookService.getBooksByUser().subscribe(userbooks => {
+  //     this.userCirculations = userbooks.filter(uc => uc.userId == this.auth.getUserDetails().id);
+  //     this.userCirculations.forEach(ucc => {
+  //         this.userBooks = this.booksNotAvailable.filter(nb => nb.id == ucc.bookId);
+  //     });
+  //   });
+  // }
+
+
+  // bookIssueRequest(book){ 
+  //   this.router.navigateByUrl("/dashboard/circulation/list/issue/"+book.toString());
+  // }
 
 }

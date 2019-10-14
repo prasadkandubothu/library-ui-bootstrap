@@ -1,0 +1,31 @@
+
+
+<div class="row">
+  
+  <div class="col-md-12">
+
+    
+              <form autocomplete="off" #f="ngForm">
+
+                <div class="form-group">
+                  <label for="bookId">Book Id</label>
+                  <input class="form-control" type="text" name="bookId" [(ngModel)]="selectedBook.id" disabled>
+                </div>
+
+                <div class="form-group">
+                  <label for="bookName">Book Name</label>
+                  <input class="form-control" type="text" [(ngModel)]="selectedBook.bookName" name="bookName" disabled>
+                </div>
+            
+                <div class="form-group">
+                    <label for="returnDate">Return Date</label>
+                    <input id="returnDate" class="form-control" type="date" name="returnDate" [(ngModel)]="selectedDate">
+                </div>
+                <button class="btn btn-primary" type="button" (click)="bookIssueRequest()">Request Book</button>
+                 
+              </form>
+       
+      
+  </div>
+ 
+</div>

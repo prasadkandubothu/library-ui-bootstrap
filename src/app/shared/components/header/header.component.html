@@ -1,6 +1,6 @@
 <div class="row backgroudColor">
   <nav class="navbar navbar-expand-lg navbar-light"> 
-    <a class="navbar-brand">Library Management System</a>
+    <a class="navbar-brand"> <i class="fa fa-book"></i> Library Management System</a>
     <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,8 +13,11 @@
             <li class="nav-item" >  
                 <a class="nav-link" routerLink="dashboard/books" routerLinkActive="active">Books</a>
             </li>
-            <li class="nav-item" >
+            <li class="nav-item" *ngIf="auth.role == 'admin'">
                 <a class="nav-link" routerLink="dashboard/users" routerLinkActive="active">Users</a>
+            </li>
+            <li class="nav-item" *ngIf="auth.role == 'user'">
+              <a class="nav-link" [routerLink]="['dashboard/users/list/add' , auth.user.id]" routerLinkActive="active">Edit Details</a>
             </li>
             <li class="nav-item" >
               <a class="nav-link" routerLink="prelogin/login" routerLinkActive="active" (click)="logOut()">Logout</a>

@@ -1,0 +1,102 @@
+<div class="row">    
+  <div class="col-lg-6">
+    <div class="container-fluid" style="height: 600px;overflow-y: overlay;">
+        <div class="panel panel-primary">
+            <div class="tableHeading">
+              <div class="floatLeft">
+                 
+                <input id="searchInput" type="text" name="searchInput" [(ngModel)]="searchText" placeholder="Search by BookId/Name" style="border: none;outline-color: #719ECE;" autocomplete="off">
+              </div>
+              <div class="floatRight">User Details <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
+            </div>        
+                <table class="table table-striped table-bordered" style="table-layout: fixed;font-size: 14px;">               
+                    <thead>
+                      <tr>
+                        <th *ngFor="let col of userColumns" class="thStyle">{{col}}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                       <tr *ngFor="let book of userCiruclationBooks | search : searchText : searchColumns"> 
+                          <td>{{book.id}}</td>
+                          <td>{{book.bookName}}</td>
+                          <td>{{book.bookName}}</td>
+                          <td>{{book.bookStatus}}</td>
+                          <td> <i class="fa fa-unlock" style="color:#347ab7" *ngIf="book.bookStatus == 'ISSUED'"> RETURN</i></td>
+                          <!-- <td>{{user.username}}</td>
+                          <td>{{user.firstname}}</td>
+                          <td>{{user.lastname}}</td>
+                          <td>{{user.role}}</td> -->
+                          <!-- <td> <i class="fas fa-pencil-alt" style="color:#347ab7" (click)="editUser(user)"></i></td>
+                          <td> <i class="fas fa-trash" style="color:rgb(182, 52, 52)" (click)="deleteUser(user)"></i></td>
+   -->
+                          <tr *ngIf="(userCiruclationBooks | search : searchText : searchColumns).length == 0">
+                                <td [attr.colspan]="bookColumns.length">No Records Found</td>
+                              </tr>
+                    </tbody>
+                  </table>
+                 
+            </div>
+          </div>
+  </div>
+  <div class="col-lg-6">
+   <div class="container-fluid" style="height: 600px;overflow-y: overlay;">
+      <div class="panel panel-primary">
+          <div class="tableHeading">
+            <div class="floatLeft">
+               
+              <input id="searchInput" type="text" name="searchInput" [(ngModel)]="searchText" placeholder="Search by BookId/Name" style="border: none;outline-color: #719ECE;" autocomplete="off">
+            </div>
+            <div class="floatRight">User Details <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
+          </div>        
+              <table class="table table-striped table-bordered" style="table-layout: fixed;font-size: 14px;">               
+                  <thead>
+                    <tr>
+                      <th *ngFor="let col of userColumns" class="thStyle">{{col}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let book of booksAvailable | search : searchText : searchColumns"> 
+                        <td>{{book.id}}</td>
+                        <td> <i class="fa fa-unlock" style="color:#347ab7; cursor: pointer" data-toggle="modal" data-target="#myModal" (click)="bookIssueRequest(book)"> REQUEST</i></td>
+                        <!-- <td>{{user.username}}</td>
+                        <td>{{user.firstname}}</td>
+                        <td>{{user.lastname}}</td>
+                        <td>{{user.role}}</td> -->
+                        <!-- <td> <i class="fas fa-pencil-alt" style="color:#347ab7" (click)="editUser(user)"></i></td>
+                        <td> <i class="fas fa-trash" style="color:rgb(182, 52, 52)" (click)="deleteUser(user)"></i></td>
+ -->
+                        <tr *ngIf="(booksAvailable | search : searchText : searchColumns).length == 0">
+                              <td [attr.colspan]="bookColumns.length">No Records Found</td>
+                            </tr>
+                  </tbody>
+                </table>
+               
+          </div>
+        </div>
+  </div>
+</div>  
+
+
+<!-- Trigger the modal with a button -->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title">Request New Book</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)= "closeModal()">&times;</button>
+       
+      </div>
+      <div class="modal-body">
+      <app-bookissue [selectedBook]="selectedBook" (updateReqBookEve)="getUserCirculationBooks($event)"></app-bookissue>
+      </div>
+      <div class="modal-footer">       
+        <button type="button" id="closePopup" class="btn btn-info" data-dismiss="modal" (click)= "closeModal()">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

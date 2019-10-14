@@ -1,20 +1,60 @@
 {
   "users": [
     {
-      "firstname": "prasad",
-      "lastname": "prasad",
-      "username": "prasad",
-      "password": "prasad",
-      "role": "user",
-      "id": 2
-    },
-    {
       "firstname": "admin",
       "lastname": "admin",
       "username": "admin",
       "password": "admin",
       "role": "admin",
       "id": 1
+    },
+    {
+      "firstname": "prasad",
+      "lastname": "prasad",
+      "password": "prasad",
+      "role": "user",
+      "id": 2,
+      "username": "prasad"
+    },
+    {
+      "firstname": "dddd",
+      "lastname": "dd",
+      "username": "ddd",
+      "password": "ddd",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "firstname": "ddss",
+      "lastname": "ss",
+      "username": "ss",
+      "password": "eee",
+      "role": "user",
+      "id": 4
+    },
+    {
+      "firstname": "dddd",
+      "lastname": "ddd",
+      "username": "ssssss",
+      "password": "www",
+      "role": "user",
+      "id": 5
+    },
+    {
+      "firstname": "dd",
+      "lastname": "dddd",
+      "username": "ddd",
+      "password": "rr",
+      "role": "user",
+      "id": 6
+    },
+    {
+      "firstname": "rrrrrredit",
+      "lastname": "rr",
+      "username": "rr",
+      "password": "rr",
+      "role": "user",
+      "id": 8
     }
   ],
   "roles": [
@@ -34,7 +74,7 @@
   "books": [
     {
       "bookName": "Java by James",
-      "author": "James",
+      "author": "Jamesedit11222ee",
       "category": "coding",
       "id": 1,
       "bookStatus": "AVAILABLE"
@@ -45,15 +85,7 @@
       "author": "Gates",
       "publications": "Vikram Publications",
       "category": "coding",
-      "bookStatus": "ISSUED"
-    },
-    {
-      "id": 3,
-      "bookName": "C by Dennies",
-      "author": "Dennies",
-      "publications": "Vikram Publications",
-      "category": "coding",
-      "bookStatus": "RESERVED"
+      "bookStatus": "AVAILABLE"
     },
     {
       "id": 4,
@@ -61,13 +93,6 @@
       "author": "Charles",
       "publications": "Vikram Publications",
       "category": "coding",
-      "bookStatus": "AVAILABLE"
-    },
-    {
-      "bookName": "ttt",
-      "author": "tt",
-      "category": "tt",
-      "id": 5,
       "bookStatus": "AVAILABLE"
     },
     {
@@ -83,13 +108,78 @@
       "author": "gsdfg",
       "category": "sdfg",
       "id": 7
+    },
+    {
+      "bookStatus": "REQUESTED",
+      "bookName": "navanee",
+      "author": "navane",
+      "category": "code",
+      "id": 8
+    },
+    {
+      "bookStatus": "REQUESTED",
+      "bookName": "prasad",
+      "author": "prasad",
+      "category": "code",
+      "id": 9
+    },
+    {
+      "bookStatus": "REQUESTED",
+      "bookName": "nikki",
+      "author": "jjj",
+      "category": "j",
+      "id": 17
+    },
+    {
+      "bookStatus": "REQUESTED",
+      "bookName": "ggggggggg",
+      "author": "gg",
+      "category": "gg",
+      "id": 19
+    },
+    {
+      "bookStatus": "REQUESTED",
+      "bookName": "vvv",
+      "author": "vvv",
+      "category": "vvv",
+      "id": 20
     }
   ],
   "circulation": [
     {
-      "id": 1,
+      "bookId": 20,
+      "returnDate": "2019-10-15",
+      "issueDate": "",
       "userId": 2,
-      "bookId": 4
+      "id": 1
+    },
+    {
+      "bookId": 19,
+      "returnDate": "2019-10-15",
+      "issueDate": "",
+      "userId": 2,
+      "id": 2
+    },
+    {
+      "bookId": 17,
+      "returnDate": "2019-10-15",
+      "issueDate": "",
+      "userId": 2,
+      "id": 3
+    },
+    {
+      "bookId": 9,
+      "returnDate": "2019-10-15",
+      "issueDate": "",
+      "userId": 2,
+      "id": 4
+    },
+    {
+      "bookId": 8,
+      "returnDate": "2019-10-15",
+      "issueDate": "",
+      "userId": 2,
+      "id": 5
     }
   ]
 }

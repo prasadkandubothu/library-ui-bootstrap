@@ -1,25 +1,41 @@
 
-<div class="container-fluid">
-  <div>
-    <div class="form-group">
-      <label for="bookId">Book Id</label>
-      <input id="bookId" class="form-control" type="text" name="bookId">
-    </div>
 
-    <div class="form-group">
-        <label for="userId">User Id</label>
-        <input id="userId" class="form-control" type="text" name="userId">
-    </div>
+<div class="row" style="padding-top:8%;">
+  
+  <div class="col-md-3 offset-md-2">
+  </div>
+  <div class="col-md-3">
 
-    <div class="form-group">
-        <label for="issueDate">Return Date</label>
-        <input id="issueDate" class="form-control" type="date" name="issueDate">
+      <div class="card"> 
+          <div class="card-header" style="color:whitesmoke; background-color: #347ab7!important;">Request New Book</div>
+          <div class="card-body">
+              <form autocomplete="off" #f="ngForm" (ngSubmit)="bookRequest(f)">
+                <div class="form-group">
+                  <label for="bookId">Book Name {{book}}</label>
+                  <input placeholder="Enter Book Name" id="bookName" class="form-control" type="text" name="bookName" [(ngModel)]="bookName" (keyup)="onSearchChange($event.target.value)">
+                  <div *ngIf="toggleAutoComple && (books | search : bookName : searchColumns).length > 0" style="width:297px;overflow-y: auto;height: auto;max-height:100px;position: absolute;
+                  text-align: center;background: #337ab747">
+                    <p class="txtHover" *ngFor="let book of books | search : bookName : searchColumns" (click)="selectedBookInfo(book)" style="padding-top: 8px;">{{book.bookName}}</p>
+                  </div>
+                </div>
+            
+                <!-- <div class="form-group">
+                    <label for="issueDate">Issue Date</label>
+                    <input id="issueDate" class="form-control" type="date" name="issueDate">
+                </div> -->
+            
+                <div class="form-group">
+                    <label for="returnDate">Return Date</label>
+                    <input id="returnDate" class="form-control" type="text" name="id">
+                </div>
+            
+                <button class="btn btn-primary" type="button" routerLink="/dashboard/circulation">Back</button>
+                 
+              </form>
+          </div>
+         </div>
+      
+  </div>
+  <div class="col-md-3 offset-md-1">
     </div>
-
-    <div class="form-group">
-        <label for="returnDate">Return Date</label>
-        <input id="returnDate" class="form-control" type="date" name="returnDate">
-    </div>
-
-  </div>  
 </div>

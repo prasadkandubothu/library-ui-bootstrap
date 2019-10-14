@@ -1,5 +1,49 @@
 <div class="container-fluid">
-    <div style="margin-top:75px;">
-        <app-table></app-table>
-      </div> 
-</div>
+     
+  <div style="margin-top:75px;">
+   
+<div class="container-fluid" style="height: 600px;overflow-y: overlay;">
+  <div class="panel panel-primary">
+      <div class="tableHeading">
+        <div class="floatLeft">
+           
+          <input id="searchInput" type="text" name="searchInput" [(ngModel)]="searchText" placeholder="Search by BookId/Name" style="border: none;outline-color: #719ECE;" autocomplete="off">
+        </div>
+        <div class="floatRight">User Details <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
+      </div>        
+          <table class="table table-striped table-bordered" style="table-layout: fixed;font-size: 14px;">               
+              <thead>
+                <tr>
+                  <th *ngFor="let col of ciuculationColumns" class="thStyle">{{col}}</th>
+                  <ng-container *ngIf="authModel.role == 'admin'">
+                    <th *ngFor="let col of adminExtraColumns" class="thStyle">{{col}}</th>
+                  </ng-container>
+                  <ng-container *ngIf="authModel.role == 'user'">
+                    <th *ngFor="let col of userExtraColumns" class="thStyle">{{col}}</th>
+                  </ng-container>
+                </tr>
+              </thead>
+              <tbody>
+                 <tr *ngFor="let circulation of circulations | search : searchText : searchColumns"> 
+                    <td>{{circulation.id}}</td>
+                    <td>{{circulation.bookId}}</td>
+                    <td>{{circulation.userId}}</td>
+                    <ng-template [ngIf]="authModel.role == 'admin'">
+                      <td> <i class="fa fa-check" style="color:#347ab7"> APPROVE</i></td>
+                      <td> <i class="fa fa-times" style="color:rgb(182, 52, 52)"> DECLINE</i></td>
+                    </ng-template>
+                    <ng-template [ngIf]="authModel.role == 'user'">
+                      <td> <i class="fa fa-unlock" style="color:#347ab7"> RETURN</i></td>
+                    </ng-template>
+                    <tr *ngIf="(circulations | search : searchText : searchColumns).length == 0">
+                          <td [attr.colspan]="totalColumns">No Records Found</td>
+                    </tr>
+                    
+              </tbody>
+            </table>
+           
+      </div>
+    </div> 
+
+  </div>      
+ </div>

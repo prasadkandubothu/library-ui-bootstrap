@@ -22,6 +22,10 @@ const routes: Routes = [
       {
         path : 'add', 
         component : UserComponent
+      },
+      {
+        path : 'add/:id', 
+        component : UserComponent
       }
     ]
   }

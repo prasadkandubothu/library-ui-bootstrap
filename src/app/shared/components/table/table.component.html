@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid">
+<div class="container-fluid" style="height: auto;overflow-y: overlay;">
     <div class="panel panel-primary">
         <div class="tableHeading">
           <div class="floatLeft">
@@ -28,7 +28,7 @@
                       {{row[key]}}
                     </td>
                   </tr>
-                  <tr *ngIf="rows !== undefined && (rows | search : searchText : searchColumns).length == 0">
+                  <tr *ngIf="rows !== undefined && (rows | search : searchText : searchColumns | tabfilter : filterVal : filterColumns).length == 0">
                     <td [attr.colspan]="actionColumn == true ? columns.length + 1 : columns.length">No Records Found</td>
                   </tr>
                 </tbody>

@@ -1,6 +1,6 @@
 
 <div class="container-fluid">
-    <div style="margin-top:20px;float:right">
+    <div style="margin-top:20px;float:right" *ngIf="auth.role == 'admin'">
         <a class="anchorStyle" routerLink="add">Add User</a>       
     </div>
 </div>

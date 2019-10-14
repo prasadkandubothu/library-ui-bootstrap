@@ -23,11 +23,12 @@ const circulationRoutes: Routes = [
       {
         path : 'issue',
         component : IssuebookComponent
-      }, 
+      },
       {
-        path : 'return',
-        component : ReturnbookComponent
-      }, 
+        path : 'issue/:book',
+        component : IssuebookComponent
+      }
+       
     ]
   }
 ];

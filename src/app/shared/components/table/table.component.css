@@ -42,5 +42,6 @@
     border:none;
 }
 input[name='searchInput']::placeholder{
-    text-align: center
+    text-align: center;
+    font-size : 14px;
 }
