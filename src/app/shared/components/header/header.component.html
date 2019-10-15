@@ -7,7 +7,7 @@
     <div id="my-nav" class="collapse navbar-collapse menuRight">
       <ul class="navbar-nav mr-auto">  
         <ng-template [ngIf]="auth.user" [ngIfElse]="loginTemplate">
-            <li class="nav-item" >
+            <li class="nav-item" *ngIf="auth.role == 'admin'">
                 <a class="nav-link" routerLink="dashboard/circulation" routerLinkActive="active">Issue Requests</a>
             </li>      
             <li class="nav-item" >  

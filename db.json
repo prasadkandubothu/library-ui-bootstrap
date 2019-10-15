@@ -77,7 +77,7 @@
       "author": "Jamesedit11222ee",
       "category": "coding",
       "id": 1,
-      "bookStatus": "AVAILABLE"
+      "bookStatus": "ISSUED"
     },
     {
       "id": 2,
@@ -96,49 +96,49 @@
       "bookStatus": "AVAILABLE"
     },
     {
-      "bookStatus": "AVAILABLE",
+      "bookStatus": "ISSUED",
       "bookName": "rr",
       "author": "rr",
       "category": "rr",
       "id": 6
     },
     {
-      "bookStatus": "AVAILABLE",
+      "bookStatus": "ISSUED",
       "bookName": "sdfgsdf",
       "author": "gsdfg",
       "category": "sdfg",
       "id": 7
     },
     {
-      "bookStatus": "REQUESTED",
+      "bookStatus": "ISSUED",
       "bookName": "navanee",
       "author": "navane",
       "category": "code",
       "id": 8
     },
     {
-      "bookStatus": "REQUESTED",
+      "bookStatus": "ISSUED",
       "bookName": "prasad",
       "author": "prasad",
       "category": "code",
       "id": 9
     },
     {
-      "bookStatus": "REQUESTED",
+      "bookStatus": "ISSUED",
       "bookName": "nikki",
       "author": "jjj",
       "category": "j",
       "id": 17
     },
     {
-      "bookStatus": "REQUESTED",
+      "bookStatus": "AVAILABLE",
       "bookName": "ggggggggg",
       "author": "gg",
       "category": "gg",
       "id": 19
     },
     {
-      "bookStatus": "REQUESTED",
+      "bookStatus": "ISSUED",
       "bookName": "vvv",
       "author": "vvv",
       "category": "vvv",
@@ -147,6 +147,7 @@
   ],
   "circulation": [
     {
+      "status": "DONE",
       "bookId": 20,
       "returnDate": "2019-10-15",
       "issueDate": "",
@@ -154,13 +155,7 @@
       "id": 1
     },
     {
-      "bookId": 19,
-      "returnDate": "2019-10-15",
-      "issueDate": "",
-      "userId": 2,
-      "id": 2
-    },
-    {
+      "status": "DONE",
       "bookId": 17,
       "returnDate": "2019-10-15",
       "issueDate": "",
@@ -168,6 +163,7 @@
       "id": 3
     },
     {
+      "status": "DONE",
       "bookId": 9,
       "returnDate": "2019-10-15",
       "issueDate": "",
@@ -175,11 +171,36 @@
       "id": 4
     },
     {
+      "status": "DONE",
       "bookId": 8,
       "returnDate": "2019-10-15",
       "issueDate": "",
       "userId": 2,
       "id": 5
+    },
+    {
+      "status": "DONE",
+      "bookId": 7,
+      "returnDate": "2019-10-15",
+      "issueDate": "",
+      "userId": 2,
+      "id": 7
+    },
+    {
+      "status": "DONE",
+      "bookId": 6,
+      "returnDate": "2019-10-15",
+      "issueDate": "",
+      "userId": 2,
+      "id": 8
+    },
+    {
+      "status": "DONE",
+      "bookId": 1,
+      "returnDate": "2019-10-15",
+      "issueDate": "",
+      "userId": 2,
+      "id": 9
     }
   ]
 }

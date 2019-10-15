@@ -1,4 +1,5 @@
 import {RouterModule, Routes} from '@angular/router';
+import { AuthgurardService } from './shared/services/authgurard.service';
 
 const appRoutes : Routes =[
     {
@@ -12,7 +13,8 @@ const appRoutes : Routes =[
     },
     {
         path : 'dashboard',
-        loadChildren : './dashboard/dashboard.module#DashboardModule'
+        loadChildren : './dashboard/dashboard.module#DashboardModule',
+        canActivate : [AuthgurardService]
     }
 
 ];

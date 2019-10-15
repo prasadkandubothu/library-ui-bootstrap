@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { UserService } from '../user.service';
 import { Role } from '../role';
 import { User } from '../user';
@@ -10,10 +10,11 @@ import { AuthenticationModel } from 'src/app/AuthenticationModel';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnChanges {
+ 
   roles : Role[];
-  user : User ;
-  userId : string;
+  user : User = {id : null, firstname : "", lastname : "", password : "", role : "", username : ""};
+  userId : string = null;
   btnTitle : string = "Add";
 
   constructor(private userService : UserService, private router : Router, private activatedRoute : ActivatedRoute, private auth: AuthenticationModel) {
@@ -23,6 +24,11 @@ export class UserComponent implements OnInit {
     }
    }
 
+   ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+   
+  }
+   
+
   ngOnInit() { 
    this.userService.getRolesDataSubjectObservable().subscribe(roles => {
     this.roles = roles;
@@ -31,7 +37,7 @@ export class UserComponent implements OnInit {
      this.userId=params.get("id");
    });
    //edit flow
-   if(this.userId){alert(this.userId);
+   if(this.userId){
      this.btnTitle = "Update";
     this.userService.getUsersDataSubjectObservable().subscribe(res => {
       this.user = res.filter(u => u.id == parseInt(this.userId))[0];

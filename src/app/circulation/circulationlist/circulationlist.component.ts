@@ -11,7 +11,7 @@ import { AuthenticationModel } from 'src/app/AuthenticationModel';
 })
 export class CirculationlistComponent implements OnInit {
 
-  circulations : Circulation[] = [];
+  inProgressCirculations : Circulation[] = [];
   //myCirculations : Circulation[] = [];
   ciuculationColumns = ["ID", "BOOK ID", "USER ID"]; 
   adminExtraColumns = ["APPROVE", "DECLINE"];
@@ -26,21 +26,37 @@ export class CirculationlistComponent implements OnInit {
 
   ngOnInit() {
     this.getCirculations();
+    //this.circulationService.initCirculationData();
+    // this.circulationService.getCiruclationSubjectObservable().subscribe(res => {
+
+    // });
   }
 
   getCirculations(){
     this.circulationService.getCiruclationSubjectObservable().subscribe((res : Circulation[]) => {
-      console.log(this.authModel.getUserDetails());
-        if(this.authModel.getUserRole() == "user"){
-          this.totalColumns = 4;
-          this.circulations = res.filter(c => {
-            return c.userId == this.authModel.getUserDetails().id
-          });
-        }
-        else
-          this.circulations = res;
-        
+      // console.log("here : "+res);
+      // console.log(this.authModel.getUserDetails());
+      //   if(this.authModel.getUserRole() == "user"){
+      //     this.totalColumns = 4;
+      //     this.circulations = res.filter(c => {
+      //       return c.userId == this.authModel.getUserDetails().id
+      //     });
+      //   }
+      //   else
+      console.log("*** :"+res);
+          this.inProgressCirculations = res.filter(c => c.status == "INPROGRESS")        
     })
+  }
+
+  approveCirculation(circulation){
+    this.circulationService.approverOrDeclineCiruclation(circulation, "ISSUED");
+    //this.circulationService.getCiruclationSubjectObservable().subscribe(res => this.circulations = res);
+    //this.circulationService.getAllCirculations();
+
+  }
+
+  declineCirculation(circulation){
+    this.circulationService.approverOrDeclineCiruclation(circulation, "AVAILABLE");
   }
 
 

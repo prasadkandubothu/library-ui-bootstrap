@@ -7,9 +7,9 @@
           <div class="card-header" style="color:whitesmoke; background-color: #347ab7!important;">Add User Here</div>
           <div class="card-body">
               <form autocomplete="off" #f="ngForm" (ngSubmit)="saveUser(f)">
-                <div class="form-group" *ngIf="userId">
-                  <label for="fname">User Id</label>
-                  <input id="fname" class="form-control" type="text" name="id" [(ngModel)]="user.id" disabled>
+                <div class="form-group" *ngIf="userId != null">
+                  <label for="id">User Id</label>
+                  <input id="id" class="form-control" type="text" name="id" [(ngModel)]="user.id" disabled>
                 </div>
                 <div class="form-group">
                   <label for="fname">First Name</label>
@@ -34,7 +34,7 @@
                     </select>
                   </div>
 
-                  <button class="btn btn-info" type="submit" >{{btnTitle}}</button>
+                  <button class="btn btn-info" type="submit" [disabled]="!f.dirty">{{btnTitle}}</button>
                   <button class="btn btn-danger" type="reset" style="margin-left:10px;" *ngIf="!userId">Reset</button>
                   <button class="btn btn-warning" type="button" routerLink="/dashboard/users" style="margin-left:10px;" *ngIf="auth.role == 'admin'">Back</button>
                   <button class="btn btn-warning" type="button" routerLink="/dashboard/books" style="margin-left:10px;" *ngIf="auth.role == 'user'">Back</button>

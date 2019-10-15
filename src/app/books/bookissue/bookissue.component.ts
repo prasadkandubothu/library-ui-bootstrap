@@ -44,6 +44,7 @@ selectedDate = this.getDefaultReturnDate();
       console.log("circulation request created : "+res);
       //this.bookService.getUserCiruclationBooks().push(this.selectedBook);
       this.bookService.getAllBooks();
+      this.circulationService.getAllInprogressCirculations();
       this.updateReqBookEve.emit("");
     });
     });

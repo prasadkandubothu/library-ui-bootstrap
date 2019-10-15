@@ -5,4 +5,5 @@ export class Circulation {
   public bookId : string;
   public issueDate : string;
   public returnDate : string;
+  public status : string = "INPROGRESS";
 }

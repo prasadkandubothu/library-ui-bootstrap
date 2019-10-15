@@ -24,18 +24,18 @@
                 </tr>
               </thead>
               <tbody>
-                 <tr *ngFor="let circulation of circulations | search : searchText : searchColumns"> 
+                 <tr *ngFor="let circulation of inProgressCirculations | search : searchText : searchColumns"> 
                     <td>{{circulation.id}}</td>
                     <td>{{circulation.bookId}}</td>
                     <td>{{circulation.userId}}</td>
                     <ng-template [ngIf]="authModel.role == 'admin'">
-                      <td> <i class="fa fa-check" style="color:#347ab7"> APPROVE</i></td>
-                      <td> <i class="fa fa-times" style="color:rgb(182, 52, 52)"> DECLINE</i></td>
+                      <td> <i class="fa fa-check" style="color:#347ab7" (click)="approveCirculation(circulation)"> APPROVE</i></td>
+                      <td> <i class="fa fa-times" style="color:rgb(182, 52, 52)" (click)="declineCirculation(circulation)"> DECLINE</i></td>
                     </ng-template>
                     <ng-template [ngIf]="authModel.role == 'user'">
                       <td> <i class="fa fa-unlock" style="color:#347ab7"> RETURN</i></td>
                     </ng-template>
-                    <tr *ngIf="(circulations | search : searchText : searchColumns).length == 0">
+                    <tr *ngIf="(inProgressCirculations | search : searchText : searchColumns).length == 0">
                           <td [attr.colspan]="totalColumns">No Records Found</td>
                     </tr>
                     

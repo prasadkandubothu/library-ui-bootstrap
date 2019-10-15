@@ -17,11 +17,12 @@
                     </thead>
                     <tbody>
                        <tr *ngFor="let book of userCiruclationBooks | search : searchText : searchColumns"> 
-                          <td>{{book.id}}</td>
+                        <td>Here : {{book}}</td> 
+                          <!-- <td>{{book.id}}</td>
                           <td>{{book.bookName}}</td>
                           <td>{{book.bookName}}</td>
-                          <td>{{book.bookStatus}}</td>
-                          <td> <i class="fa fa-unlock" style="color:#347ab7" *ngIf="book.bookStatus == 'ISSUED'"> RETURN</i></td>
+                          <td>{{book.bookStatus}}</td> -->
+                          <!-- <td> <i class="fa fa-unlock" style="color:#347ab7" *ngIf="book.bookStatus == 'ISSUED'"> RETURN</i></td> -->
                           <!-- <td>{{user.username}}</td>
                           <td>{{user.firstname}}</td>
                           <td>{{user.lastname}}</td>
@@ -29,6 +30,8 @@
                           <!-- <td> <i class="fas fa-pencil-alt" style="color:#347ab7" (click)="editUser(user)"></i></td>
                           <td> <i class="fas fa-trash" style="color:rgb(182, 52, 52)" (click)="deleteUser(user)"></i></td>
    -->
+                   
+                       </tr>
                           <tr *ngIf="(userCiruclationBooks | search : searchText : searchColumns).length == 0">
                                 <td [attr.colspan]="bookColumns.length">No Records Found</td>
                               </tr>
@@ -44,7 +47,7 @@
           <div class="tableHeading">
             <div class="floatLeft">
                
-              <input id="searchInput" type="text" name="searchInput" [(ngModel)]="searchText" placeholder="Search by BookId/Name" style="border: none;outline-color: #719ECE;" autocomplete="off">
+              <input id="searchInput" type="text" name="availableSearchInput" [(ngModel)]="availableSearchText" placeholder="Search by BookId/Name" style="border: none;outline-color: #719ECE;" autocomplete="off">
             </div>
             <div class="floatRight">User Details <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
           </div>        
@@ -55,7 +58,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                     <tr *ngFor="let book of booksAvailable | search : searchText : searchColumns"> 
+                     <tr *ngFor="let book of booksAvailable | search : availableSearchText : searchColumns"> 
                         <td>{{book.id}}</td>
                         <td> <i class="fa fa-unlock" style="color:#347ab7; cursor: pointer" data-toggle="modal" data-target="#myModal" (click)="bookIssueRequest(book)"> REQUEST</i></td>
                         <!-- <td>{{user.username}}</td>
@@ -65,7 +68,7 @@
                         <!-- <td> <i class="fas fa-pencil-alt" style="color:#347ab7" (click)="editUser(user)"></i></td>
                         <td> <i class="fas fa-trash" style="color:rgb(182, 52, 52)" (click)="deleteUser(user)"></i></td>
  -->
-                        <tr *ngIf="(booksAvailable | search : searchText : searchColumns).length == 0">
+                        <tr *ngIf="(booksAvailable | search : availableSearchText : searchColumns).length == 0">
                               <td [attr.colspan]="bookColumns.length">No Records Found</td>
                             </tr>
                   </tbody>
@@ -91,7 +94,7 @@
        
       </div>
       <div class="modal-body">
-      <app-bookissue [selectedBook]="selectedBook" (updateReqBookEve)="getUserCirculationBooks($event)"></app-bookissue>
+      <app-bookissue [selectedBook]="selectedBook" (updateReqBookEve)="issueBookRequestSuccessEvent($event)"></app-bookissue>
       </div>
       <div class="modal-footer">       
         <button type="button" id="closePopup" class="btn btn-info" data-dismiss="modal" (click)= "closeModal()">Close</button>

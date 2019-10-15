@@ -3,6 +3,7 @@ import { ApphttpclientService } from '../apphttpclient.service';
 import { User } from './user';
 import { Role } from './role';
 import { BehaviorSubject } from 'rxjs';
+import { CommonService } from '../shared/services/common.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class UserService {
   private usersDataSubject = new BehaviorSubject<User[]>([]);
   private rolesDataSubject = new BehaviorSubject<Role[]>([]);
 
-  constructor(private httpClientService : ApphttpclientService) { 
+  constructor(private httpClientService : ApphttpclientService, private commonService : CommonService) { 
     this.initUsersData();
     this.initRolesData();
 
@@ -28,6 +29,7 @@ export class UserService {
   //
 
   initUsersData(){
+    
     this.getAllUsers();
   }
 
@@ -52,6 +54,7 @@ export class UserService {
 
   getAllUsers() {
     this.httpClientService.get('users').subscribe((res : User[]) => { console.log("response : "+res)
+    this.commonService.userDataObservable = this.usersDataSubject.asObservable();
     this.usersDataSubject.next(res);
     });
   }
@@ -71,7 +74,7 @@ export class UserService {
     })
   }
 
-  editUser(user : User, userId : string){ alert("in service : "+userId)
+  editUser(user : User, userId : string){ 
     this.httpClientService.put('users/'+userId, user).subscribe(res => {
       console.log("user edit saved successfully");
       this.getAllUsers();
@@ -80,7 +83,7 @@ export class UserService {
 
   deleteUser(user : User){
     this.httpClientService.delete('users/'+user.id).subscribe(res => {
-      console.log("user edeleted successfully");
+      console.log("user deleted successfully");
       this.getAllUsers();
     })
   }
