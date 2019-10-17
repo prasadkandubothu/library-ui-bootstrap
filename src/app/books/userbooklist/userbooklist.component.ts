@@ -35,46 +35,43 @@ export class UserbooklistComponent implements OnInit {
     
    }
 
-  // ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
-  //   console.log("ON Changes...");
-    
-  // }
 
   ngOnInit() {
-    //this.bookService.setUserCiruclationBooks([]);
     console.log("ON init...");
-    //this.getUserCirculationBooks("");
     
      //test
       this.bookService.getAllBooks(false).subscribe(res => {
         this.availableBooks = res.filter(book => book.bookStatus == "AVAILABLE");
         this.unAvailableBooks = res.filter(book => book.bookStatus != "AVAILABLE");
       });
-
-
-     this.circulationService.getAllCirculations(false).subscribe(circs => { 
-      this.userCirculations = circs.filter(uc => uc.userId == this.auth.getUserDetails().id);
-      this.userCirculations.forEach((ucc: Circulation) => {
-       
-          let book = this.unAvailableBooks.find(book => parseInt(ucc.bookId) == book.id);
-          this.userCiruclationBooks.push(book)
-      });
-    });
-   
+      
+    this.processUserCirculationBooks();
   } 
 
+  processUserCirculationBooks(){ console.log("processing user circulation books");
+    this.circulationService.getAllCirculations(false).subscribe(circs => {
+      this.userCiruclationBooks = []; 
+      this.userCirculations = circs.filter(uc => uc.userId == this.auth.getUserDetails().id);
+      this.userCirculations.forEach((ucc: Circulation) => {       
+        let book = this.unAvailableBooks.find(book => parseInt(ucc.bookId) == book.id);
+          if(book!= undefined && book.id){  console.log("user process book : "+book.id);
+            this.userCiruclationBooks.push(book);
+          }
+      });     
+    });    
+  }
 
   bookIssueRequest(book){ 
+    console.log("selected book : "+book.id)
     this.selectedBook = book;
   }
 
   issueBookRequestSuccessEvent(eventData){
-
     document.getElementById("closePopup").click();
-
+    this.processUserCirculationBooks();
   }
 
-  getUserCirculationBooks(test){
+  getUserCirculationBooks1(test){
     this.circulationService.getAllCirculations(false).subscribe(circs => {  
       this.userCirculations = circs.filter(uc => uc.userId == this.auth.getUserDetails().id);
       this.userCirculations.forEach(ucc => {

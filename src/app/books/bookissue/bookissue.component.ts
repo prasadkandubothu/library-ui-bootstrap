@@ -35,10 +35,10 @@ selectedDate = this.getDefaultReturnDate();
     //alert(this.selectedBook.id);
   }
 
-  bookIssueRequest(){
+  bookIssueRequest(){ console.log("selected book in save: "+this.selectedBook)
     this.selectedBook.bookStatus = "REQUESTED";
-    this.bookService.bookIssueRequest(this.selectedBook).subscribe(res => {
-      console.log("book requested : "+res);
+    this.bookService.bookIssueRequest(this.selectedBook).subscribe((res : Book) => {
+      console.log("book issue requested : "+res.bookStatus);
     this.circulationService.createCirculation(this.auth.getUserDetails().id, this.selectedBook, this.selectedDate)
     .subscribe(res => {
       console.log("circulation request created : "+res);

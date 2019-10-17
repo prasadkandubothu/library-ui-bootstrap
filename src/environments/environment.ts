@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  baseURI : 'http://my-json-server.typicode.com/prasadkandubothu/library-ui-bootstrap/'
-  //baseURI : 'http://localhost:4000/'
+  //baseURI : 'http://my-json-server.typicode.com/prasadkandubothu/library-ui-bootstrap/'
+  baseURI : 'http://localhost:4000/'
 };
 
 /*

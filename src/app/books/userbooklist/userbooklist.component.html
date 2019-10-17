@@ -16,6 +16,7 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <ng-container *ngIf="userCiruclationBooks.length > 0">
                        <tr *ngFor="let book of userCiruclationBooks | search : searchText : searchColumns"> 
                           <td>{{book.id}}</td>
                           <td>{{book.bookName}}</td>
@@ -23,6 +24,7 @@
                           <td>{{book.bookStatus}}</td>
                           <td> <i class="fa fa-unlock" style="color:#347ab7" *ngIf="book.bookStatus == 'ISSUED'"> RETURN</i></td>
                        </tr>
+                      </ng-container>
                           <tr *ngIf="(userCiruclationBooks | search : searchText : searchColumns).length == 0">
                                 <td [attr.colspan]="bookColumns.length">No Records Found</td>
                               </tr>

@@ -13,9 +13,12 @@ export class BookService {
   books : Book[] = [];
 
   userCirculations = [];
-  userCiruclationBooks=[];
+  userCiruclationBooks : Book[]= [];
 
   private bookDataSubject =  new BehaviorSubject<Book[]>([]);
+
+  private userCiruclationBooksSubject =  new BehaviorSubject<Book[]>([]);
+
 
   constructor(private auth : AuthenticationModel ,private httpClientSerivce: ApphttpclientService) { 
     this.initUserData();
@@ -23,6 +26,17 @@ export class BookService {
 
   initUserData(){
     this.getAllBooks(true);
+  }
+
+  getUserCiruclationBooksSuject(){
+    return this.userCiruclationBooksSubject;
+   }
+  getUserCiruclationBooks(){
+   return this.userCiruclationBooksSubject.asObservable();
+  }
+
+  setUserCiruclationBooks(books : Book[]){
+    this.userCiruclationBooksSubject.next(books);
   }
 
   getAllBooks(flag : boolean){
@@ -86,12 +100,12 @@ export class BookService {
   return this.bookDataSubject.getValue().filter(book => book.bookStatus == 'AVAILABLE');
  }*/
 
-  // setUserCiruclationBooks(any){
-  //   return this.userCirculations = any;
+  // setUserCiruclationBooks(books : Book[]){
+  //   return this.userCiruclationBooks = books;
   // }
 
   // getUserCiruclationBooks(){
-  //   return this.userCirculations;
+  //   return this.userCiruclationBooks;
   // }
 
 }
