@@ -3,6 +3,9 @@ import { ApphttpclientService } from 'src/app/apphttpclient.service';
 import { Circulation } from '../circulation.modal';
 import { CirculationService } from '../circulation.service';
 import { AuthenticationModel } from 'src/app/AuthenticationModel';
+import { AppToastrService } from 'src/app/app-toastr.service';
+import { BookService } from 'src/app/books/book.service';
+import { Book } from 'src/app/books/book';
 
 @Component({
   selector: 'app-circulationlist',
@@ -20,44 +23,34 @@ export class CirculationlistComponent implements OnInit {
   searchText : "";
   totalColumns = 5;
 
-  constructor(private circulationService : CirculationService, private authModel : AuthenticationModel) { 
+  books : Book[] ;
+
+  constructor(private bookService : BookService, private toastr : AppToastrService, private circulationService : CirculationService, private authModel : AuthenticationModel) { 
     console.log("ciculationlist constructor......!");
   }
 
+  //Load the circulations from service or server
   ngOnInit() {
-    this.getCirculations();
-    //this.circulationService.initCirculationData();
-    // this.circulationService.getCiruclationSubjectObservable().subscribe(res => {
-
-    // });
-  }
-
-  getCirculations(){
-    this.circulationService.getCiruclationSubjectObservable().subscribe((res : Circulation[]) => {
-      // console.log("here : "+res);
-      // console.log(this.authModel.getUserDetails());
-      //   if(this.authModel.getUserRole() == "user"){
-      //     this.totalColumns = 4;
-      //     this.circulations = res.filter(c => {
-      //       return c.userId == this.authModel.getUserDetails().id
-      //     });
-      //   }
-      //   else
+    this.circulationService.getAllCirculations(false).subscribe((res : Circulation[]) => {
       console.log("*** :"+res);
           this.inProgressCirculations = res.filter(c => c.status == "INPROGRESS")        
-    })
+    }) 
   }
 
-  approveCirculation(circulation){
-    this.circulationService.approverOrDeclineCiruclation(circulation, "ISSUED");
-    //this.circulationService.getCiruclationSubjectObservable().subscribe(res => this.circulations = res);
-    //this.circulationService.getAllCirculations();
-
+  //For Approver or Decline Operations
+  approveOrDeclineCirculation(circulation, action){ 
+      this.getAllBooks().subscribe(res => {
+        this.books = res;
+        if(action === "APPROVE")
+          this.circulationService.approverOrDeclineCiruclation(circulation, "ISSUED", this.books);
+        else
+        this.circulationService.approverOrDeclineCiruclation(circulation, "AVAILABLE" , this.books);
+      });  
   }
-
-  declineCirculation(circulation){
-    this.circulationService.approverOrDeclineCiruclation(circulation, "AVAILABLE");
+  
+  //Load all the books from bookService
+  getAllBooks(){
+   return  this.bookService.getAllBooks(false);
   }
-
 
 }

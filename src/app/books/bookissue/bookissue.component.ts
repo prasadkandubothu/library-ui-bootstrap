@@ -39,12 +39,12 @@ selectedDate = this.getDefaultReturnDate();
     this.selectedBook.bookStatus = "REQUESTED";
     this.bookService.bookIssueRequest(this.selectedBook).subscribe(res => {
       console.log("book requested : "+res);
-    this.circulationService.createCirculationRequest(this.auth.getUserDetails().id, this.selectedBook, this.selectedDate)
+    this.circulationService.createCirculation(this.auth.getUserDetails().id, this.selectedBook, this.selectedDate)
     .subscribe(res => {
       console.log("circulation request created : "+res);
       //this.bookService.getUserCiruclationBooks().push(this.selectedBook);
-      this.bookService.getAllBooks();
-      this.circulationService.getAllInprogressCirculations();
+      this.bookService.getAllBooks(true);
+      this.circulationService.getAllCirculations(true);
       this.updateReqBookEve.emit("");
     });
     });

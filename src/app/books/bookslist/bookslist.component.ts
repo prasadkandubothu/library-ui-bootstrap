@@ -55,13 +55,11 @@ export class BookslistComponent implements OnInit {
 
   
   ngOnInit(): void {
-
-    this.bookService.getUserDataSubjectObservable().subscribe(res => {
+    this.bookService.getAllBooks(false).subscribe(res => {
       this.isLoaderDisplay = false;
       this.books = res;
       this.booksAvailable = res.filter(book => book.bookStatus == 'AVAILABLE');
       this.booksNotAvailable = res.filter(book => book.bookStatus != 'AVAILABLE');
-      
     });
     
   }
@@ -108,10 +106,9 @@ export class BookslistComponent implements OnInit {
       return false;
     }
     console.log("book selected to delete "+this.selectedBook.id);
-    this._httpService.delete('books/'+this.selectedBook.id).subscribe(res => {
-      console.log("book deleted "+ res);
-      this.selectedBook = new Book();
-      this.bookService.getAllBooks();});
+   
+    this.bookService.deleteBook(this.selectedBook.id);
+    this.selectedBook = new Book();
   }
 
   /**
@@ -127,7 +124,6 @@ export class BookslistComponent implements OnInit {
   }
 
   saveBookAck($event){
-   
     document.getElementById("closePopup").click();
     console.log("--"+$event);
   }

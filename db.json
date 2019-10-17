@@ -9,7 +9,7 @@
       "id": 1
     },
     {
-      "firstname": "prasad",
+      "firstname": "prasadff",
       "lastname": "prasad",
       "password": "prasad",
       "role": "user",
@@ -93,7 +93,7 @@
       "author": "Charles",
       "publications": "Vikram Publications",
       "category": "coding",
-      "bookStatus": "AVAILABLE"
+      "bookStatus": "ISSUED"
     },
     {
       "bookStatus": "ISSUED",
@@ -131,7 +131,7 @@
       "id": 17
     },
     {
-      "bookStatus": "AVAILABLE",
+      "bookStatus": "ISSUED",
       "bookName": "ggggggggg",
       "author": "gg",
       "category": "gg",
@@ -143,6 +143,13 @@
       "author": "vvv",
       "category": "vvv",
       "id": 20
+    },
+    {
+      "bookStatus": "AVAILABLE",
+      "bookName": "mmmmmmmedit",
+      "author": "mmmmmmm",
+      "category": "mmmm",
+      "id": 21
     }
   ],
   "circulation": [
@@ -201,6 +208,22 @@
       "issueDate": "",
       "userId": 2,
       "id": 9
+    },
+    {
+      "status": "DONE",
+      "bookId": 19,
+      "returnDate": "2019-10-17",
+      "issueDate": "",
+      "userId": 2,
+      "id": 10
+    },
+    {
+      "status": "DONE",
+      "bookId": 4,
+      "returnDate": "2019-10-17",
+      "issueDate": "",
+      "userId": 2,
+      "id": 12
     }
   ]
 }

@@ -10,39 +10,49 @@ import { AuthenticationModel } from 'src/app/AuthenticationModel';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit, OnChanges {
+export class UserComponent implements OnInit {
  
   roles : Role[];
-  user : User = {id : null, firstname : "", lastname : "", password : "", role : "", username : ""};
+  user : User;//{id : null, firstname : "", lastname : "", password : "", role : "", username : ""};
   userId : string = null;
   btnTitle : string = "Add";
 
-  constructor(private userService : UserService, private router : Router, private activatedRoute : ActivatedRoute, private auth: AuthenticationModel) {
+  constructor(private userService : UserService, private router : Router, private activatedRoute : ActivatedRoute, private auth: AuthenticationModel) {   
     if(!this.user){
       console.log("cons...called");
       this.user = new User();
     }
+
+    this.userService.getRolesDataSubjectObservable().subscribe(roles => {
+      this.roles = roles;
+     });
+     this.activatedRoute.paramMap.subscribe(params => {
+       this.userId=params.get("id");
+     });
+     //edit flow
+     if(this.userId){
+       this.btnTitle = "Update";
+      this.userService.getUsersDataSubjectObservable().subscribe(res => {
+        this.user = res.filter(u => u.id == parseInt(this.userId))[0];
+       });
+     }
    }
 
-   ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
-   
-  }
-   
 
   ngOnInit() { 
-   this.userService.getRolesDataSubjectObservable().subscribe(roles => {
-    this.roles = roles;
-   });
-   this.activatedRoute.paramMap.subscribe(params => {
-     this.userId=params.get("id");
-   });
-   //edit flow
-   if(this.userId){
-     this.btnTitle = "Update";
-    this.userService.getUsersDataSubjectObservable().subscribe(res => {
-      this.user = res.filter(u => u.id == parseInt(this.userId))[0];
-     });
-   }
+  //  this.userService.getRolesDataSubjectObservable().subscribe(roles => {
+  //   this.roles = roles;
+  //  });
+  //  this.activatedRoute.paramMap.subscribe(params => {
+  //    this.userId=params.get("id");
+  //  });
+  //  //edit flow
+  //  if(this.userId){
+  //    this.btnTitle = "Update";
+  //   this.userService.getUsersDataSubjectObservable().subscribe(res => {
+  //     this.user = res.filter(u => u.id == parseInt(this.userId))[0];
+  //    });
+  //  }
    
   }
 

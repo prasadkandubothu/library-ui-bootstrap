@@ -3,7 +3,6 @@ import { ApphttpclientService } from '../apphttpclient.service';
 import { User } from './user';
 import { Role } from './role';
 import { BehaviorSubject } from 'rxjs';
-import { CommonService } from '../shared/services/common.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +19,7 @@ export class UserService {
   private usersDataSubject = new BehaviorSubject<User[]>([]);
   private rolesDataSubject = new BehaviorSubject<Role[]>([]);
 
-  constructor(private httpClientService : ApphttpclientService, private commonService : CommonService) { 
+  constructor(private httpClientService : ApphttpclientService) { 
     this.initUsersData();
     this.initRolesData();
 
@@ -53,8 +52,7 @@ export class UserService {
   }
 
   getAllUsers() {
-    this.httpClientService.get('users').subscribe((res : User[]) => { console.log("response : "+res)
-    this.commonService.userDataObservable = this.usersDataSubject.asObservable();
+    this.httpClientService.get('users').subscribe((res : User[]) => { console.log("response : "+res)    
     this.usersDataSubject.next(res);
     });
   }

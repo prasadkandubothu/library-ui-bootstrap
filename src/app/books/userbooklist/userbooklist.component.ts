@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { AuthenticationModel } from 'src/app/AuthenticationModel';
 import { Book } from '../book';
 import { Circulation } from 'src/app/circulation/circulation.modal';
+import { CirculationService } from 'src/app/circulation/circulation.service';
 
 @Component({
   selector: 'app-userbooklist',
   templateUrl: './userbooklist.component.html',
   styleUrls: ['./userbooklist.component.css']
 })
-export class UserbooklistComponent implements OnInit, OnChanges {
+export class UserbooklistComponent implements OnInit {
  
 
   @Input()
@@ -27,15 +28,17 @@ export class UserbooklistComponent implements OnInit, OnChanges {
 
   userCirculations = [];
   userCiruclationBooks : Book[]=[];
+  availableBooks : Book[] = [];
+  unAvailableBooks : Book[] = [];
 
-  constructor(private bookService : BookService, private router : Router, private auth : AuthenticationModel) {
+  constructor(private circulationService : CirculationService, private bookService : BookService, private router : Router, private auth : AuthenticationModel) {
     
    }
 
-  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
-    console.log("ON Changes...");
+  // ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+  //   console.log("ON Changes...");
     
-  }
+  // }
 
   ngOnInit() {
     //this.bookService.setUserCiruclationBooks([]);
@@ -43,19 +46,22 @@ export class UserbooklistComponent implements OnInit, OnChanges {
     //this.getUserCirculationBooks("");
     
      //test
-     this.bookService.getCirulationsData().subscribe(circs => { 
-      this.userCirculations = circs.filter(uc => uc.userId == this.auth.getUserDetails().id);
-      this.userCirculations.forEach(ucc => {
-        console.log(this.bookService.getUnavalableBooks()); 
-       
-       //.find(nb => nb.id == ucc.bookId);
-        //alert(book);
-        //this.userCiruclationBooks.push(book);
+      this.bookService.getAllBooks(false).subscribe(res => {
+        this.availableBooks = res.filter(book => book.bookStatus == "AVAILABLE");
+        this.unAvailableBooks = res.filter(book => book.bookStatus != "AVAILABLE");
       });
-      //console.log(this.userCirculations.length);
+
+
+     this.circulationService.getAllCirculations(false).subscribe(circs => { 
+      this.userCirculations = circs.filter(uc => uc.userId == this.auth.getUserDetails().id);
+      this.userCirculations.forEach((ucc: Circulation) => {
+       
+          let book = this.unAvailableBooks.find(book => parseInt(ucc.bookId) == book.id);
+          this.userCiruclationBooks.push(book)
+      });
     });
    
-  }
+  } 
 
 
   bookIssueRequest(book){ 
@@ -69,13 +75,11 @@ export class UserbooklistComponent implements OnInit, OnChanges {
   }
 
   getUserCirculationBooks(test){
-    this.bookService.getCirulationsData().subscribe(circs => {  console.log("hi" +circs);
+    this.circulationService.getAllCirculations(false).subscribe(circs => {  
       this.userCirculations = circs.filter(uc => uc.userId == this.auth.getUserDetails().id);
       this.userCirculations.forEach(ucc => {
-          let book = this.bookService.getUnavalableBooks().find(nb => nb.id == ucc.bookId);
-        
-            this.userCiruclationBooks.push(book);
-            
+          let book = this.unAvailableBooks.find(nb => nb.id == ucc.bookId);        
+            this.userCiruclationBooks.push(book);            
       });
     });
   }

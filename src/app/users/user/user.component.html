@@ -6,7 +6,7 @@
       <div class="card">
           <div class="card-header" style="color:whitesmoke; background-color: #347ab7!important;">Add User Here</div>
           <div class="card-body">
-              <form autocomplete="off" #f="ngForm" (ngSubmit)="saveUser(f)">
+              <form autocomplete="off" #f="ngForm" (ngSubmit)="saveUser(f)" *ngIf="user">
                 <div class="form-group" *ngIf="userId != null">
                   <label for="id">User Id</label>
                   <input id="id" class="form-control" type="text" name="id" [(ngModel)]="user.id" disabled>

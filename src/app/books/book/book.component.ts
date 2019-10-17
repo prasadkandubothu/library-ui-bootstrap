@@ -23,22 +23,20 @@ export class BookComponent implements OnInit {
   @Output() saveEvent = new EventEmitter<any>();
 
 
-
-
   saveBook(){
     this.loader.loaderStart();
     console.log("in book "+ this.book);
     if(this.isEdit){ console.log("edit book called...****"+ this.book.id);
       this.httpClientService.put('books/'+this.book.id, this.book).subscribe(res => {
         console.log("book updated" + res);
-        this.bookService.getAllBooks();
+        this.bookService.getAllBooks(true);
       });
     }
     else{ 
     this.httpClientService.post('books', this.book).subscribe(res => {
       console.log(res);
       console.log("book saved");
-      this.bookService.getAllBooks();
+      this.bookService.getAllBooks(true);
     });
   }
    
