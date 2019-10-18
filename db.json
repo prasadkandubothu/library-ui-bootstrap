@@ -9,68 +9,12 @@
       "id": 1
     },
     {
-      "firstname": "prasadff",
+      "firstname": "prasad",
       "lastname": "prasad",
       "password": "prasad",
       "role": "user",
       "id": 2,
       "username": "prasad"
-    },
-    {
-      "firstname": "dddd",
-      "lastname": "dd",
-      "username": "ddd",
-      "password": "ddd",
-      "role": "user",
-      "id": 3
-    },
-    {
-      "firstname": "ddss",
-      "lastname": "ss",
-      "username": "ss",
-      "password": "eee",
-      "role": "user",
-      "id": 4
-    },
-    {
-      "firstname": "dddd",
-      "lastname": "ddd",
-      "username": "ssssss",
-      "password": "www",
-      "role": "user",
-      "id": 5
-    },
-    {
-      "firstname": "dd",
-      "lastname": "dddd",
-      "username": "ddd",
-      "password": "rr",
-      "role": "user",
-      "id": 6
-    },
-    {
-      "firstname": "rrrrrredit",
-      "lastname": "rr",
-      "username": "rr",
-      "password": "rr",
-      "role": "user",
-      "id": 8
-    },
-    {
-      "firstname": "nikki",
-      "lastname": "nikki",
-      "username": "nikki",
-      "password": "nikki",
-      "id": 9,
-      "role": "user"
-    },
-    {
-      "firstname": "niha",
-      "lastname": "niha",
-      "username": "niha",
-      "password": "niha",
-      "role": "user",
-      "id": 10
     }
   ],
   "roles": [
@@ -110,62 +54,6 @@
       "publications": "Vikram Publications",
       "category": "coding",
       "bookStatus": "AVAILABLE"
-    },
-    {
-      "bookStatus": "AVAILABLE",
-      "bookName": "rr",
-      "author": "rr",
-      "category": "rr",
-      "id": 6
-    },
-    {
-      "bookStatus": "AVAILABLE",
-      "bookName": "sdfgsdf",
-      "author": "gsdfg",
-      "category": "sdfg",
-      "id": 7
-    },
-    {
-      "bookStatus": "AVAILABLE",
-      "bookName": "navanee",
-      "author": "navane",
-      "category": "code",
-      "id": 8
-    },
-    {
-      "bookStatus": "AVAILABLE",
-      "bookName": "prasad",
-      "author": "prasad",
-      "category": "code",
-      "id": 9
-    },
-    {
-      "bookStatus": "AVAILABLE",
-      "bookName": "nikki",
-      "author": "jjj",
-      "category": "j",
-      "id": 17
-    },
-    {
-      "bookStatus": "AVAILABLE",
-      "bookName": "ggggggggg",
-      "author": "gg",
-      "category": "gg",
-      "id": 19
-    },
-    {
-      "bookStatus": "AVAILABLE",
-      "bookName": "vvv",
-      "author": "vvv",
-      "category": "vvv",
-      "id": 20
-    },
-    {
-      "bookStatus": "AVAILABLE",
-      "bookName": "mmmmmmmedit",
-      "author": "mmmmmmm",
-      "category": "mmmm",
-      "id": 21
     }
   ],
   "circulation": [
