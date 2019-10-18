@@ -1,34 +1,38 @@
-<div class="row">
-        <div class="col-md-4">
-   
-            </div>
-            <div class="col-md-4">
-        <div id="reg">
-                <form autocomplete="off">
 
-                    <div class="form-group">
-                        <label for="firstname">Firstname</label>
-                        <input id="firstname" class="form-control" type="text" name="firstname">
-                    </div>
-                    <div class="form-group">
-                            <label for="lastname">Lastname</label>
-                            <input id="lastname" class="form-control" type="text" name="lastname">
-                    </div>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input id="username" class="form-control" type="text" name="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input id="password" class="form-control" type="password" name="password">
-                    </div>
-                    <button class="btn btn-primary" type="submit">Register</button>
-                    <button class="btn btn-danger" type="reset" style="margin-left:10px;">Reset</button>
-                </form>
-    </div>
+<div class="row" style="padding-top:2%;">
+    <div class="col-md-3 offset-md-2">
     </div>
     <div class="col-md-4">
-   
-        </div>
+        <div class="card">
+            <div class="card-header" style="color:whitesmoke; background-color: #347ab7!important;">Add User Here</div>
+            <div class="card-body">
+                <form autocomplete="off" #f="ngForm" (ngSubmit)="registerUser(f)" *ngIf="user">
+                  
+                  <div class="form-group">
+                    <label for="fname">First Name</label>
+                    <input id="fname" class="form-control" type="text" name="firstname" [(ngModel)]="user.firstname">
+                  </div>
+                  <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input id="lname" class="form-control" type="text" name="lastname" [(ngModel)]="user.lastname">
+                  </div>
+                  <div class="form-group">
+                    <label for="uname">User Name</label>
+                    <input id="uname" class="form-control" type="text" name="username" [(ngModel)]="user.username">
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Password</label>
+                    <input id="pwd" class="form-control" type="password" name="password" [(ngModel)]="user.password">
+                  </div>
+  
+                    <button class="btn btn-info" type="submit" [disabled]="!f.dirty">Register</button>
+                    <button class="btn btn-danger" type="reset" style="margin-left:10px;" *ngIf="!userId">Reset</button>
+                                         
+                </form>
+            </div>
+          
         
-</div>
+    </div>
+    <div class="col-md-2 offset-md-1">
+      </div>
+  </div>

@@ -81,4 +81,8 @@ export class CirculationService{
         this.getAllCirculations(true);
       });
     }
+
+    public deleteCirculationObservable(id: any) {
+      return this.httpClientService.delete('circulation/' + id);
+    }
 }

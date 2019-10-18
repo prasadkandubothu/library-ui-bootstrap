@@ -81,6 +81,21 @@ export class UserbooklistComponent implements OnInit {
     });
   }
 
+
+  returnOrCancelRequest(book : Book){
+    book.bookStatus = "AVAILABLE";
+    let circulation =this.userCirculations.find((uc : Circulation) => parseInt(uc.bookId) == book.id);
+    this.circulationService.deleteCirculationObservable(circulation.id).subscribe(res => {
+      this.bookService.updateBookObservable(book).subscribe(res => {
+        console.log("book success fully Canceled or Returned");
+        this.bookService.getAllBooks(true);
+        this.circulationService.getAllCirculations(true);
+      });
+    });
+    this.bookService.bookIssueRequest(book)
+  }
+
+
    /**
    * This method, is used to clear the radiobuttons of table component
    */

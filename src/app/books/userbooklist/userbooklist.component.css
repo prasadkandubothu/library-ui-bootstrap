@@ -52,3 +52,8 @@ input[name='searchInput']::placeholder{
     text-align: center;
     font-size : 14px;
 }
+
+input[name='availableSearchInput']::placeholder{
+    text-align: center;
+    font-size : 14px;
+}

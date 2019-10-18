@@ -7,7 +7,7 @@
                  
                 <input id="searchInput" type="text" name="searchInput" [(ngModel)]="searchText" placeholder="Search by BookId/Name" style="border: none;outline-color: #719ECE;" autocomplete="off">
               </div>
-              <div class="floatRight">User Details <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
+              <div class="floatRight">Issued/Requested Books <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
             </div>        
                 <table class="table table-striped table-bordered" style="table-layout: fixed;font-size: 14px;">               
                     <thead>
@@ -20,9 +20,10 @@
                        <tr *ngFor="let book of userCiruclationBooks | search : searchText : searchColumns"> 
                           <td>{{book.id}}</td>
                           <td>{{book.bookName}}</td>
-                          <td>{{book.bookName}}</td>
+                          <td>{{book.authorName}}</td>
                           <td>{{book.bookStatus}}</td>
-                          <td> <i class="fa fa-unlock" style="color:#347ab7" *ngIf="book.bookStatus == 'ISSUED'"> RETURN</i></td>
+                          <td> <i class="fa fa-unlock" style="color:#347ab7;cursor: pointer" *ngIf="book.bookStatus == 'ISSUED'" (click)="returnOrCancelRequest(book)"> RETURN</i>
+                           <i class="fa fa-unlock" style="color:#347ab7;cursor: pointer" *ngIf="book.bookStatus == 'REQUESTED'" (click)="returnOrCancelRequest(book)"> CANCEL</i></td>
                        </tr>
                       </ng-container>
                           <tr *ngIf="(userCiruclationBooks | search : searchText : searchColumns).length == 0">
@@ -42,7 +43,7 @@
                
               <input id="searchInput" type="text" name="availableSearchInput" [(ngModel)]="availableSearchText" placeholder="Search by BookId/Name" style="border: none;outline-color: #719ECE;" autocomplete="off">
             </div>
-            <div class="floatRight">User Details <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
+            <div class="floatRight">Available Books <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
           </div>        
               <table class="table table-striped table-bordered" style="table-layout: fixed;font-size: 14px;">               
                   <thead>
@@ -53,6 +54,8 @@
                   <tbody>
                      <tr *ngFor="let book of booksAvailable | search : availableSearchText : searchColumns"> 
                         <td>{{book.id}}</td>
+                        <td>{{book.bookName}}</td>
+                        <td>{{book.authorName}}</td>
                         <td> <i class="fa fa-unlock" style="color:#347ab7; cursor: pointer" data-toggle="modal" data-target="#myModal" (click)="bookIssueRequest(book)"> REQUEST</i></td>
                         <!-- <td>{{user.username}}</td>
                         <td>{{user.firstname}}</td>

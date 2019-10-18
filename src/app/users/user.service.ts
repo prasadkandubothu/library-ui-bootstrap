@@ -3,6 +3,7 @@ import { ApphttpclientService } from '../apphttpclient.service';
 import { User } from './user';
 import { Role } from './role';
 import { BehaviorSubject } from 'rxjs';
+import { AppToastrService } from '../app-toastr.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class UserService {
   private usersDataSubject = new BehaviorSubject<User[]>([]);
   private rolesDataSubject = new BehaviorSubject<Role[]>([]);
 
-  constructor(private httpClientService : ApphttpclientService) { 
+  constructor(private httpClientService : ApphttpclientService, private toastr : AppToastrService) { 
     this.initUsersData();
     this.initRolesData();
 
@@ -67,8 +68,11 @@ export class UserService {
 
   saveUser(user : User){
     this.httpClientService.post('users', user).subscribe(res => {
-      console.log("user saved successfully");
+      this.toastr.success("user saved successfully");
       this.getAllUsers();
+    }, (err)=> {
+      this.toastr.error("User save operation failed.");
+      console.log("User-save operation "+ err);
     })
   }
 

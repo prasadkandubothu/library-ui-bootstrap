@@ -55,6 +55,22 @@
       "password": "rr",
       "role": "user",
       "id": 8
+    },
+    {
+      "firstname": "nikki",
+      "lastname": "nikki",
+      "username": "nikki",
+      "password": "nikki",
+      "id": 9,
+      "role": "user"
+    },
+    {
+      "firstname": "niha",
+      "lastname": "niha",
+      "username": "niha",
+      "password": "niha",
+      "role": "user",
+      "id": 10
     }
   ],
   "roles": [
@@ -77,7 +93,7 @@
       "author": "Jamesedit11222ee",
       "category": "coding",
       "id": 1,
-      "bookStatus": "REQUESTED"
+      "bookStatus": "AVAILABLE"
     },
     {
       "id": 2,
@@ -85,7 +101,7 @@
       "author": "Gates",
       "publications": "Vikram Publications",
       "category": "coding",
-      "bookStatus": "REQUESTED"
+      "bookStatus": "AVAILABLE"
     },
     {
       "id": 4,
@@ -93,59 +109,59 @@
       "author": "Charles",
       "publications": "Vikram Publications",
       "category": "coding",
-      "bookStatus": "REQUESTED"
+      "bookStatus": "AVAILABLE"
     },
     {
-      "bookStatus": "REQUESTED",
+      "bookStatus": "AVAILABLE",
       "bookName": "rr",
       "author": "rr",
       "category": "rr",
       "id": 6
     },
     {
-      "bookStatus": "REQUESTED",
+      "bookStatus": "AVAILABLE",
       "bookName": "sdfgsdf",
       "author": "gsdfg",
       "category": "sdfg",
       "id": 7
     },
     {
-      "bookStatus": "ISSUED",
+      "bookStatus": "AVAILABLE",
       "bookName": "navanee",
       "author": "navane",
       "category": "code",
       "id": 8
     },
     {
-      "bookStatus": "REQUESTED",
+      "bookStatus": "AVAILABLE",
       "bookName": "prasad",
       "author": "prasad",
       "category": "code",
       "id": 9
     },
     {
-      "bookStatus": "ISSUED",
+      "bookStatus": "AVAILABLE",
       "bookName": "nikki",
       "author": "jjj",
       "category": "j",
       "id": 17
     },
     {
-      "bookStatus": "REQUESTED",
+      "bookStatus": "AVAILABLE",
       "bookName": "ggggggggg",
       "author": "gg",
       "category": "gg",
       "id": 19
     },
     {
-      "bookStatus": "ISSUED",
+      "bookStatus": "AVAILABLE",
       "bookName": "vvv",
       "author": "vvv",
       "category": "vvv",
       "id": 20
     },
     {
-      "bookStatus": "ISSUED",
+      "bookStatus": "AVAILABLE",
       "bookName": "mmmmmmmedit",
       "author": "mmmmmmm",
       "category": "mmmm",
@@ -153,133 +169,6 @@
     }
   ],
   "circulation": [
-    {
-      "status": "DONE",
-      "bookId": 21,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 1
-    },
-    {
-      "status": "DONE",
-      "bookId": 20,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 2
-    },
-    {
-      "status": "DONE",
-      "bookId": 17,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 4
-    },
-    {
-      "status": "DONE",
-      "bookId": 8,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 6
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 19,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 7
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 19,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 8
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 19,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 9
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 9,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 10
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 7,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 11
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 6,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 12
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 4,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 13
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 4,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 14
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 2,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 15
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 1,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 16
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 1,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 17
-    },
-    {
-      "status": "INPROGRESS",
-      "bookId": 1,
-      "returnDate": "2019-10-17",
-      "issueDate": "",
-      "userId": 2,
-      "id": 18
-    }
+    
   ]
 }

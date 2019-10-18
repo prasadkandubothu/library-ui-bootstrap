@@ -51,10 +51,6 @@ export class BookService {
   }
 
 
-  updateBook(){
-
-  }
-
   deleteBook(id){
     this.httpClientSerivce.delete('books/'+id).subscribe(res => {
       console.log("book deleted "+ res);
@@ -81,6 +77,10 @@ export class BookService {
 
 
   bookIssueRequest(book){
+    return this.httpClientSerivce.put('books/'+book.id, book);
+  }
+
+  updateBookObservable(book){
     return this.httpClientSerivce.put('books/'+book.id, book);
   }
 /*
