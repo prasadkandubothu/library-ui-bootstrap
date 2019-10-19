@@ -32,7 +32,7 @@ export class BookslistComponent implements OnInit {
   keys = ["id",  "bookName", "author","category", "bookStatus"];
   searchColumns : string [] = ['id', 'bookName'];  
   filterColumns : string [] = ['bookStatus'];
-  filterOptions : string [] = ['AVAILABLE', 'ISSUED', 'RESERVED']
+  filterOptions : string [] = ['AVAILABLE', 'ISSUED', 'REQUESTED']
   isLoaderDisplay : boolean = false;
 
   @ViewChild(TableComponent)

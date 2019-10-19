@@ -8,27 +8,27 @@
       <ul class="navbar-nav mr-auto">  
         <ng-template [ngIf]="auth.user" [ngIfElse]="loginTemplate">
             <li class="nav-item" *ngIf="auth.role == 'admin'">
-                <a class="nav-link" routerLink="dashboard/circulation" routerLinkActive="active">Issue Requests</a>
+                <a class="nav-link" routerLink="dashboard/circulation" routerLinkActive="active"> <i class="fa fa-exchange-alt" style="cursor: pointer"></i> Issue Requests</a>
             </li>      
             <li class="nav-item" >  
-                <a class="nav-link" routerLink="dashboard/books" routerLinkActive="active">Books</a>
+                <a class="nav-link" routerLink="dashboard/books" routerLinkActive="active"> <i class="fa fa-book-open" style="cursor: pointer"></i> Books</a>
             </li>
             <li class="nav-item" *ngIf="auth.role == 'admin'">
-                <a class="nav-link" routerLink="dashboard/users" routerLinkActive="active">Users</a>
+                <a class="nav-link" routerLink="dashboard/users" routerLinkActive="active"> <i class="fa fa-user" style="cursor: pointer"></i> Users</a>
             </li>
             <li class="nav-item" *ngIf="auth.role == 'user'">
-              <a class="nav-link" [routerLink]="['dashboard/users/list/add' , auth.user.id]" routerLinkActive="active">Edit Details</a>
+              <a class="nav-link" [routerLink]="['dashboard/users/list/add' , auth.user.id]" routerLinkActive="active"> <i class="fa fa-user-edit" style="cursor: pointer"></i> Edit Details</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" routerLink="prelogin/login" routerLinkActive="active" (click)="logOut()">Logout</a>
+              <a class="nav-link" routerLink="prelogin/login" routerLinkActive="active" (click)="logOut()"> <i class="fa fa-sign-out-alt" style="cursor: pointer"></i> Logout</a>
             </li>
         </ng-template>
         <ng-template #loginTemplate>  
             <li class="nav-item">
-              <a class="nav-link" routerLink="prelogin/register" routerLinkActive="active">Register</a>
+              <a class="nav-link" routerLink="prelogin/register" routerLinkActive="active"> <i class="fa fa-plus" style="cursor: pointer"></i> Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="prelogin/login" routerLinkActive="active">Login</a>
+              <a class="nav-link" routerLink="prelogin/login" routerLinkActive="active"> <i class="fa fa-sign-in-alt" style="cursor: pointer"></i> Login</a>
             </li>
         </ng-template>
       </ul>

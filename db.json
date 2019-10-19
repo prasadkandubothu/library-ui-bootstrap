@@ -34,7 +34,7 @@
   "books": [
     {
       "bookName": "Java by James",
-      "author": "Jamesedit11222ee",
+      "author": "James",
       "category": "coding",
       "id": 1,
       "bookStatus": "AVAILABLE"
@@ -45,7 +45,7 @@
       "author": "Gates",
       "publications": "Vikram Publications",
       "category": "coding",
-      "bookStatus": "AVAILABLE"
+      "bookStatus": "ISSUED"
     },
     {
       "id": 4,
@@ -53,10 +53,25 @@
       "author": "Charles",
       "publications": "Vikram Publications",
       "category": "coding",
-      "bookStatus": "AVAILABLE"
+      "bookStatus": "REQUESTED"
     }
   ],
   "circulation": [
-    
+    {
+      "status": "INPROGRESS",
+      "bookId": 4,
+      "returnDate": "2019-10-19",
+      "issueDate": "",
+      "userId": 2,
+      "id": 1
+    },
+    {
+      "status": "DONE",
+      "bookId": 2,
+      "returnDate": "2019-10-19",
+      "issueDate": "",
+      "userId": 2,
+      "id": 2
+    }
   ]
 }

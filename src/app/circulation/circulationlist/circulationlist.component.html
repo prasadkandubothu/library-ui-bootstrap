@@ -7,9 +7,9 @@
       <div class="tableHeading">
         <div class="floatLeft">
            
-          <input id="searchInput" type="text" name="searchInput" [(ngModel)]="searchText" placeholder="Search by BookId/Name" style="border: none;outline-color: #719ECE;" autocomplete="off">
+          <input id="searchInput" type="text" name="searchInput" [(ngModel)]="searchText" placeholder="Search by ID" style="border: none;outline-color: #719ECE;" autocomplete="off">
         </div>
-        <div class="floatRight">User Details <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
+        <div class="floatRight">Requested Book Details <div style="width:18px;height:18px;"class="spinner-border" *ngIf="isLoaderDisplay"></div> </div>
       </div>        
           <table class="table table-striped table-bordered" style="table-layout: fixed;font-size: 14px;">               
               <thead>
@@ -29,8 +29,8 @@
                     <td>{{circulation.bookId}}</td>
                     <td>{{circulation.userId}}</td>
                     <ng-template [ngIf]="authModel.role == 'admin'">
-                      <td> <i class="fa fa-check" style="color:#347ab7" (click)="approveOrDeclineCirculation(circulation, 'APPROVE')"> APPROVE</i></td>
-                      <td> <i class="fa fa-times" style="color:rgb(182, 52, 52)" (click)="approveOrDeclineCirculation(circulation, 'DECLINE')"> DECLINE</i></td>
+                      <td> <i class="fa fa-check" style="color:#347ab7; cursor: pointer" (click)="approveOrDeclineCirculation(circulation, 'APPROVE')"> APPROVE</i></td>
+                      <td> <i class="fa fa-times" style="color:rgb(182, 52, 52); cursor: pointer" (click)="approveOrDeclineCirculation(circulation, 'DECLINE')"> DECLINE</i></td>
                     </ng-template>
                     <ng-template [ngIf]="authModel.role == 'user'">
                       <td> <i class="fa fa-unlock" style="color:#347ab7"> RETURN</i></td>

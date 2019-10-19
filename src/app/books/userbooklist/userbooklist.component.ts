@@ -31,6 +31,10 @@ export class UserbooklistComponent implements OnInit {
   availableBooks : Book[] = [];
   unAvailableBooks : Book[] = [];
 
+
+  circulationBookColumns = ['BOOK ID', 'BOOK NAME', 'AUTHOR', 'BOOK STAATUS', 'ACTION'];
+  availableBookColumns = ['BOOK ID', 'BOOK NAME', 'AUTHOR', 'ACTION'];
+
   constructor(private circulationService : CirculationService, private bookService : BookService, private router : Router, private auth : AuthenticationModel) {
     
    }
